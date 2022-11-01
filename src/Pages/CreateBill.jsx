@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import AqueductInfoForm from '../Components/AqueductInfoForm'
-import BillInfoForm from '../Components/BillInfoForm'
-import ConsumptionsInfoForm from '../Components/ConsumptionsInfoForm'
-import SewerageInfoForm from '../Components/SewerageInfoForm'
+import AqueductInfoForm from '../Components/CreateBillForms/AqueductInfoForm'
+import BillInfoForm from '../Components/CreateBillForms/BillInfoForm'
+import ConsumptionsInfoForm from '../Components/CreateBillForms/ConsumptionsInfoForm'
+import SewerageInfoForm from '../Components/CreateBillForms/SewerageInfoForm'
 import './CreateBill.css'
 export default function CreateBill() {
     const [step, setStep] = useState(1)

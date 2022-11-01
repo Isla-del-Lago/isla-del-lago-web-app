@@ -1,4 +1,4 @@
-.createBill {
+.addConsumption {
     width: 100%;
     height: 90%;
     font-family: var(--principal-font);
@@ -6,25 +6,38 @@
     flex-direction: column;
 }
 
-.createBill-header {
+.addConsumption-header {
     width: 80%;
     margin: 0 auto ;
 }
 
-.createBill-header-title {
+.addConsumption-header-title {
     font-weight: 700;
     color: var(--principal-color);
     font-size: 3rem;
     margin-bottom: 10px;
 }
 
-.createBill-body {
+.addConsumption-body {
     height: 90%;
     display: flex;
     align-items: center;
 }
+.bill-selecter{
+    margin-bottom: 2.5rem;
+    padding: 1.3rem;
+    font-family: var(--principal-font);
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: #FDFDFF;
+    border: 1px solid #F2F5FF;
+    box-shadow: 4px 8px 4px #F8F7F7;
+    border-radius: 10rem;
+    color: var(--secondary-color);
 
-.bill-form {
+}
+
+.consumption-form {
     width: 100%;
     height: 100%;
     display: flex;
