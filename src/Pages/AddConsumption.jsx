@@ -13,22 +13,13 @@ export default function AddConsumption() {
                 <div className="addConsumption-body">
                     <form action="" className="consumption-form">
                         {step === 1 && <SelectBillForm
-                            onCancel={() => console.log('Cancel')}
+                            onCancel={() => console.log('Cancelar')}
                             onContinue={() => setStep(2)}
                         />}
                         {step === 2 && <ConsumptionsForms
                             onGoBack={() => setStep(1)}
                             onSaveComsumptions={() => console.log('Guardar consumos')}
                         />}
-                        {/*
-                        {step === 3 && <AqueductInfoForm
-                            onGoBack={() => setStep(2)}
-                            onContinue={() => setStep(4)}
-                        />}
-                        {step === 4 && <SewerageInfoForm
-                            onGoBack={() => setStep(3)}
-                            onSaveBill={() => console.log('Guardar')}
-                        />} */}
                     </form>
                 </div>
             </div>
