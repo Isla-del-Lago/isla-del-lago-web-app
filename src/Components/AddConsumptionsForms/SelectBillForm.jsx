@@ -1,4 +1,5 @@
 import ButtonsContainer from "../ButtonsContainer";
+import data from '../../Utils/data.json'
 
 export default function SelectBillForm(props) {
     return (
@@ -6,11 +7,9 @@ export default function SelectBillForm(props) {
             <div className="labels-section">
                 <label htmlFor="bills">Selecciona una factura</label>
                 <select name="bills" id="bills" className="bill-selecter">
-                    <option value="20/01/2022-22/03/2022">20/01/2022-22/03/2022</option>
-                    <option value="20/01/2022-22/03/2022">20/01/2022-22/03/2022</option>
-                    <option value="20/01/2022-22/03/2022">20/01/2022-22/03/2022</option>
-                    <option value="20/01/2022-22/03/2022">20/01/2022-22/03/2022</option>
-                    <option value="20/01/2022-22/03/2022">20/01/2022-22/03/2022</option>
+                    {data.bills.map((bill, index) => (
+                        <option key={index} value={bill}>{bill}</option>
+                    ))}
                 </select>
             </div>
             <ButtonsContainer

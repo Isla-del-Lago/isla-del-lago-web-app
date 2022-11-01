@@ -9,7 +9,7 @@ export default function AqueductInfoForm(props) {
                 <input type="number" name="" id="AcueCfr$" className="currency-input" />
                 <label htmlFor="AcueCrb$" className="sublabel">Consumo residencial básico</label>
                 <input type="number" name="" id="AcueCrb$" className="currency-input" />
-                <label htmlFor="AcueCrbs$" className="sublabel">Consumo residencial superior a básico</label>
+                <label htmlFor="AcueCrsb$" className="sublabel">Consumo residencial superior a básico</label>
                 <input type="number" name="" id="AcueCrsb$" className="currency-input" />
             </div>
             <ButtonsContainer

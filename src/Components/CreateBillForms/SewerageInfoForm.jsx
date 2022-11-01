@@ -9,7 +9,7 @@ export default function SewerageInfoForm(props) {
                 <input type="number" name="" id="AlcaCfr$" className="currency-input" />
                 <label htmlFor="AlcaCrb$" className="sublabel">Consumo residencial básico</label>
                 <input type="number" name="" id="AlcaCrb$" className="currency-input" />
-                <label htmlFor="AlcaCrbs$" className="sublabel">Consumo residencial superior a básico</label>
+                <label htmlFor="AlcaCrsb$" className="sublabel">Consumo residencial superior a básico</label>
                 <input type="number" name="" id="AlcaCrsb$" className="currency-input" />
             </div>
             <ButtonsContainer

@@ -15,7 +15,7 @@ export default function CreateBill() {
                 <div className="createBill-body">
                     <form action="" className="bill-form">
                         {step === 1 && <BillInfoForm
-                            onCancel={() => console.log('Cancel')}
+                            onCancel={() => console.log('Cancelar')}
                             onContinue={() => setStep(2)}
                         />}
                         {step === 2 && <ConsumptionsInfoForm
