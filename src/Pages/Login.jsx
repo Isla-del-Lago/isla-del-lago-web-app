@@ -1,6 +1,7 @@
 import './Login.css'
 import loginImage from '../Assets/Login.png'
 import { Link } from 'react-router-dom'
+import Alert from '../Components/Alert'
 export default function Login() {
     return (
         <>
