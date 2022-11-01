@@ -1,4 +1,4 @@
-import ButtonsContainer from "./ButtonsContainer";
+import ButtonsContainer from "../ButtonsContainer";
 
 export default function SewerageInfoForm(props) {
     return (
