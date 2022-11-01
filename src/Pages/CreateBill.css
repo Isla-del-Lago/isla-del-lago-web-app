@@ -1,0 +1,94 @@
+.createBill {
+    width: 100%;
+    height: 90%;
+    font-family: var(--principal-font);
+    display: flex;
+    flex-direction: column;
+}
+
+.createBill-header {
+    width: 80%;
+    margin: 0 auto 6rem;
+    height: 15%;
+}
+
+.createBill-header-title {
+    font-weight: 700;
+    color: var(--principal-color);
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.createBill-body {
+    height: 85%;
+    display: flex;
+    align-items: center;
+}
+
+.bill-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.labels-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    font-family: var(--principal-font);
+    color: var(--secondary-color);
+    font-weight: bolder;
+}
+
+.labels-section label {
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.labels-section label:first-child {
+    margin-bottom: 1.5rem;
+}
+
+.labels-section .sublabel {
+    margin: 0 0 1.5rem 0.5rem;
+    font-size: 1.3rem;
+
+}
+
+.labels-section input {
+    margin-bottom: 2.5rem;
+    padding: 1.3rem;
+    font-family: var(--principal-font);
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: #FDFDFF;
+    border: 1px solid #F2F5FF;
+    box-shadow: 4px 8px 4px #F8F7F7;
+    border-radius: 10rem;
+    color: var(--secondary-color);
+}
+
+.buttons-container {
+    display: grid;
+    width: 80%;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    margin: 0 auto ;
+}
+
+.labels-section .button-form {
+    font-family: var(--principal-font);
+    font-weight: 900;
+    background: var(--principal-color);
+    border-radius: 1rem;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.7rem;
+    margin: 0;
+}
