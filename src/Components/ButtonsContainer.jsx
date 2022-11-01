@@ -1,3 +1,4 @@
+import './ButtonsContainer.css'
 export default function ButtonsContainer(props) {
     const { textButton1, textButton2 } = props
     return (

@@ -82,23 +82,3 @@
     border-radius: 10rem;
     color: var(--secondary-color);
 }
-
-.buttons-container {
-    display: grid;
-    width: 80%;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
-    margin: 0 auto;
-}
-
-.labels-section .button-form {
-    font-family: var(--principal-font);
-    font-weight: 900;
-    background: var(--principal-color);
-    border-radius: 1rem;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    padding: 0.7rem;
-    margin: 0;
-}
