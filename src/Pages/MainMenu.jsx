@@ -2,6 +2,7 @@ import './MainMenu.css'
 import billIcon from '../Assets/bill_icon.png'
 import createBillIcon from '../Assets/create_bill_icon.png'
 import consumptionIcom from '../Assets/add_consumption.png'
+import { Link } from 'react-router-dom'
 export default function MainMenu() {
     return (
         <>
@@ -12,18 +13,24 @@ export default function MainMenu() {
                 </div>
                 <div className="mainMenu-body">
                     <div className="operations-container">
+                        <Link to={'/create-bill'}>
                         <div className="operation">
                             <img src={createBillIcon} alt="" />
                             <p>Crear factura</p>
                         </div>
+                        </Link>
+                        <Link to={'/add-consumption'}>
                         <div className="operation">
                             <img src={consumptionIcom} alt="" />
                             <p>Añadir consumos</p>
                         </div>
+                        </Link>
+                        <Link to={'/consult-bill'}>
                         <div className="operation">
                             <img src={billIcon} alt="" />
                             <p>Consultar facturas</p>
                         </div>
+                        </Link>
                     </div>
                 </div>
             </div>
