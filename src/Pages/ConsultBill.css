@@ -54,3 +54,72 @@
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
 }
+
+.chart-page {
+    width: 100vw;
+    height: 100vh;
+}
+
+.chart-container {
+    width: 100%;
+    background-color: var(--principal-color);
+    color: #fff;
+    padding:  5% 0;
+}
+
+.chart-container img {
+    margin: 5% 10%;
+}
+
+.chart-container .chart-subtitle {
+    text-align: center;
+}
+
+.chart-container .chart-title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.chart-container .chart-date {
+    text-align: center;
+    margin: 0 0 30px;
+}
+
+.consumption-table {
+    width: 100%;
+    padding: 10% 0;
+}
+
+.consumption-table-title {
+    color: var(--secondary-color);
+    text-align: center;
+    font-size: 3rem;
+    margin: 0 0 20px;
+}
+
+.consumption-table-subtitle {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1.7rem;
+}
+
+.consumption-table-row {
+    border-bottom: 1px solid #beb7b78c;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5% 10%;
+}
+
+.consumption-table-item-name {
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--third-color);
+
+}
+
+.consumption-table-item-value {
+    text-align: end;
+    font-size: 1.7rem;
+    color: var(--secondary-color);
+}
