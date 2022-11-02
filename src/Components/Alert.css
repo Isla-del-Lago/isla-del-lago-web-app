@@ -3,7 +3,7 @@
     z-index: 1;
     width: 100vw;
     height: 100vh;
-    background-color: #c4bbb088;
+    background-color: var(--background-layer);
     display: flex;
     justify-content: center;
     align-items: center;
