@@ -1,0 +1,10 @@
+.closeIcon-link {
+    position: absolute;
+    top: 30px;
+    right: 10%;
+}
+
+.closeIcon-link img {
+    width: 1.5rem;
+    height: 1.5rem;
+}

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import CloseButton from '../Components/CloseButton'
 import AqueductInfoForm from '../Components/CreateBillForms/AqueductInfoForm'
 import BillInfoForm from '../Components/CreateBillForms/BillInfoForm'
 import ConsumptionsInfoForm from '../Components/CreateBillForms/ConsumptionsInfoForm'
@@ -10,12 +11,13 @@ export default function CreateBill() {
         <>
             <div className="createBill">
                 <div className="createBill-header">
+                    {step > 1 && <CloseButton path={'/menu'} />}
                     <h1 className="createBill-header-title">Informacion de la factura</h1>
                 </div>
                 <div className="createBill-body">
                     <form action="" className="bill-form">
                         {step === 1 && <BillInfoForm
-                            onCancel={() => console.log('Cancelar')}
+                            onCancel={() => document.location = '/menu'}
                             onContinue={() => setStep(2)}
                         />}
                         {step === 2 && <ConsumptionsInfoForm

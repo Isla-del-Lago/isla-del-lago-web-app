@@ -1,7 +1,6 @@
 import './Login.css'
 import loginImage from '../Assets/Login.png'
 import { Link } from 'react-router-dom'
-import Alert from '../Components/Alert'
 export default function Login() {
     return (
         <>
@@ -14,11 +13,11 @@ export default function Login() {
                     <div className="image-container">
                         <img className="login-image" src={loginImage} alt="" />
                     </div>
-                    <form className="login-form" action="">
+                    <form className="login-form">
                         <input type="text" placeholder="Correo" />
                         <input type="text" placeholder="Contraseña" />
                         <p>¿Olvidaste tu contraseña?</p>
-                        <button className="button-form">
+                        <button type="button" className="button-form">
                             <Link to={'/menu'} >
                                 Ingresar
                             </Link>

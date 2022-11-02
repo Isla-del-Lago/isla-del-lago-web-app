@@ -18,17 +18,17 @@ export default function ConsumptionsForms(props) {
         <>
             <div className="labels-section">
                 {data.apartments.slice(step, step + 2).map((apartment, index) => (
-                    <tag key={index}>
+                    <div key={index}>
                         <label htmlFor={index}>{apartment}
                         </label>
                         <input type="number" name="" id={index} className="currency-input" />
-                    </tag>
+                    </div>
                 ))
                 }
             </div>
             <ButtonsContainer
                 textButton1='Regresar'
-                textButton2='Continuar'
+                textButton2={step === data.apartments.length - 2 ? 'Guardar' : 'Continuar'}
                 onFirstOptionHandler={step === 0 ? props.onGoBack : onBack}
                 onSecondOptionHandler={step === data.apartments.length - 2 ? props.onSaveComsumptions : onContinue}
             />

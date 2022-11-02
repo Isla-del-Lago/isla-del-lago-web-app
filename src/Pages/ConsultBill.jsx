@@ -31,6 +31,7 @@ export default function ConsultBill(props) {
                                     </select>
                                 </div>
                                 <ButtonsContainer
+                                    path={'/menu'}
                                     textButton1='Cancelar'
                                     textButton2='Buscar'
                                     onFirstOptionHandler={() => console.log('Cancelar')}

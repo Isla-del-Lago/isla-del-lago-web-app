@@ -1,14 +1,6 @@
-.addConsumption {
-    width: 100%;
-    height: 90%;
-    font-family: var(--principal-font);
-    display: flex;
-    flex-direction: column;
-}
-
 .addConsumption-header {
     width: 80%;
-    margin: 0 auto;
+    margin: 2rem auto 0;
 }
 
 .addConsumption-header-title {

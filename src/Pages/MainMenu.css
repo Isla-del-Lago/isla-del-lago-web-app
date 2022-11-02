@@ -1,18 +1,18 @@
-.mainMenu {
-    height: 90%;
-    width: 100%;
-    font-family: var(--principal-font);
-}
-
 .mainMenu-header {
     width: 80%;
     display: flex;
     flex-direction: column;
-    margin: 0 auto 6rem;
-
+    margin: 2rem auto 6rem;
 }
 
 .mainMenu-header-title {
+    display: inline;
+    font-weight: 700;
+    color: var(--principal-color);
+    font-size: 3rem;
+}
+
+.mainMenu-header-username {
     display: inline;
     font-weight: 700;
     color: var(--principal-color);
@@ -26,10 +26,17 @@
     font-size: 1.3rem;
 }
 
+.mainMenu-body {
+    height: 70%;
+    display: flex;
+    align-items: center;
+}
+
 .operations-container {
     margin: 0 auto;
-    width: 90vw;
-    height: 90vw;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: w;
     display: grid;
     grid-template-columns: 45% 45%;
     grid-template-rows: 45% 45%;
@@ -56,6 +63,7 @@
     margin-top: 1rem;
     text-align: center;
 }
-a{
+
+a {
     text-decoration: none;
 }
