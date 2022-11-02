@@ -47,7 +47,7 @@
     background: #FDFDFF;
     border: 1px solid #F2F5FF;
     box-shadow: 4px 8px 4px #F8F7F7;
-    border-radius: 10rem;
+    border-radius: 1rem;
     font-family: var(--principal-font);
     color: var(--secondary-color);
     font-weight: bolder;
