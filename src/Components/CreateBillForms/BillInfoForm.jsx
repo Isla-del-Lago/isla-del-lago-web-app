@@ -15,6 +15,7 @@ export default function BillInfoForm(props) {
                 <input type="number" name="" id="cleaning" className="currency-input" />
             </div>
             <ButtonsContainer
+                path={'/menu'}
                 textButton1='Cancelar'
                 textButton2='Continuar'
                 onFirstOptionHandler={props.onCancel}
