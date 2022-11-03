@@ -17,6 +17,10 @@ export default function ConsumptionsForms(props) {
     return (
         <>
             <div className="labels-section">
+                <div className="date-selected">
+                    <h1>Factura seleccionada:</h1>
+                    <h1 >20/05/2022-20/06/2022</h1>
+                </div>
                 {data.apartments.slice(step, step + 2).map((apartment, index) => (
                     <div key={index}>
                         <label htmlFor={index}>{apartment}

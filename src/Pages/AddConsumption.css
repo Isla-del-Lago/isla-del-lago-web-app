@@ -37,6 +37,16 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.date-selected{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 1rem;
+    background-color: var(--principal-color);
+    color: #fff;
+    margin: 0 0 7rem;
+}
 
 .labels-section {
     display: flex;
