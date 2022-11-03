@@ -6,10 +6,14 @@ import ConsumptionsInfoForm from '../Components/CreateBillForms/ConsumptionsInfo
 import SewerageInfoForm from '../Components/CreateBillForms/SewerageInfoForm'
 import './CreateBill.css'
 export default function CreateBill() {
+
+    if (!sessionStorage.AuthToken) {
+        document.location = '/'
+    }
     const [step, setStep] = useState(1)
     return (
         <>
-            <div className="createBill">
+            {sessionStorage.AuthToken && <div className="createBill">
                 <div className="createBill-header">
                     {step > 1 && <CloseButton path={'/menu'} />}
                     <h1 className="createBill-header-title">Informacion de la factura</h1>
@@ -34,7 +38,7 @@ export default function CreateBill() {
                         />}
                     </form>
                 </div>
-            </div>
+            </div>}
         </>
     )
 }

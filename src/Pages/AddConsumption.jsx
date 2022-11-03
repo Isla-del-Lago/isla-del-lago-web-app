@@ -4,10 +4,14 @@ import SelectBillForm from '../Components/AddConsumptionsForms/SelectBillForm'
 import CloseButton from '../Components/CloseButton'
 import './AddConsumption.css'
 export default function AddConsumption() {
+    
+    if (!sessionStorage.AuthToken) {
+        document.location = '/'
+    }
     const [step, setStep] = useState(1)
     return (
         <>
-            <div className="addConsumption">
+            {sessionStorage.AuthToken && <div className="addConsumption">
                 <div className="addConsumption-header">
                     {step > 1 && <CloseButton path={'/menu'} />}
                     <h1 className="addConsumption-header-title">Informacion de consumo</h1>
@@ -24,7 +28,7 @@ export default function AddConsumption() {
                         />}
                     </form>
                 </div>
-            </div>
+            </div>}
         </>
     )
 }
