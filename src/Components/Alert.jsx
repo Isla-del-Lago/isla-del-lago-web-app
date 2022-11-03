@@ -10,8 +10,8 @@ export default function Alert(props) {
                         <h1 className="alert-title">{title}</h1>
                         <h2 className="alert-subtitle">{subtitle}</h2>
                     </div>
-                    <div className="alert-footer">
-                        <h1 className="alert-footer-text">{footer}</h1>
+                    <div className="alert-footer" onClick={() => props.onCloseAlert()}>
+                        <h1 className="alert-footer-text" >{footer}</h1>
                     </div>
                 </div>
             </div>

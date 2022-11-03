@@ -5,10 +5,14 @@ import ConsumptionsTable from '../Components/ConsultBill/ConsumptionsTable'
 import data from '../Utils/data.json'
 import './ConsultBill.css'
 export default function ConsultBill(props) {
+
+    if (!sessionStorage.AuthToken) {
+        document.location = '/'
+    }
     const [consulted, setConsulted] = useState(false)
     return (
         <>
-            {!consulted &&
+            {!consulted && sessionStorage.AuthToken &&
                 <>
                     <div className="consultBill">
                         <div className="consultBill-header">
@@ -42,7 +46,7 @@ export default function ConsultBill(props) {
                     </div>
                 </>
             }
-            {consulted &&
+            {consulted && sessionStorage.AuthToken &&
                 <div className="chart-page">
                     <ConsumptionsChart
                         onGoBack={() => setConsulted(false)}

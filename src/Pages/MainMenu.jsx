@@ -5,11 +5,20 @@ import consumptionIcom from '../Assets/add_consumption.png'
 import { Link } from 'react-router-dom'
 import CloseButton from '../Components/CloseButton'
 export default function MainMenu() {
+    const closeSessionHandler = () => {
+        sessionStorage.clear()
+        document.location = '/'
+    }
+    if (!sessionStorage.AuthToken) {
+        document.location = '/'
+    }
     return (
         <>
-            <div className="mainMenu">
+            {sessionStorage.AuthToken && <div className="mainMenu">
                 <div className="mainMenu-header">
-                    <CloseButton path={'/'}/>
+                    <div className="" onClick={closeSessionHandler}>
+                        <CloseButton />
+                    </div>
                     <h1 className="mainMenu-header-title">Bienvenido de nuevo</h1>
                     <h1 className="mainMenu-header-username">"nombre de usuario"</h1>
                     <h3 className="mainMenu-header-subtitle">Selecciona la operacion que deseas realizar</h3>
@@ -36,7 +45,7 @@ export default function MainMenu() {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div>}
         </>
     )
 }

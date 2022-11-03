@@ -6,9 +6,6 @@ import ConsultBill from './Pages/ConsultBill';
 import CreateBill from './Pages/CreateBill';
 import Login from './Pages/Login';
 import MainMenu from './Pages/MainMenu';
-// import Alert from './Components/Alert';
-// import succesIcon from './Assets/success.svg';
-// import warningIcon from './Assets/warning.svg';
 import errorIcon from './Assets/error.svg';
 import Alert from './Components/Alert';
 function App() {
