@@ -13,7 +13,7 @@ export default function ButtonsContainer(props) {
                     </button>
                     :
                     <button type="button" className="button-form" onClick={props.onFirstOptionHandler}>{textButton1}</button>}
-                <button type="button" className="button-form" onClick={props.onSecondOptionHandler}>{textButton2}</button>
+                <button type="submit" className="button-form" >{textButton2}</button>
             </div>
         </>
     )
