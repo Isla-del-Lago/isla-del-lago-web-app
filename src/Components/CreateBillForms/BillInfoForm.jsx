@@ -11,9 +11,9 @@ export default function BillInfoForm(props) {
                     <label htmlFor="endDate" className="sublabel">Fecha final</label>
                     <input type="date" name="" id="endDate" required />
                     <label htmlFor="discounts">Descuentos ($)</label>
-                    <input type="number" name="" id="discounts" className="currency-input" required />
+                    <input type="number" name="" id="discounts" className="currency-input" required step={0.01} />
                     <label htmlFor="cleaning">Aseo ($)</label>
-                    <input type="number" name="" id="cleaning" className="currency-input" required />
+                    <input type="number" name="" id="cleaning" className="currency-input" required step={0.01} />
                 </div>
                 <ButtonsContainer
                     path={'/menu'}
