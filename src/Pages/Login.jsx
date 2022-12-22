@@ -27,7 +27,7 @@ export default function Login() {
             .then(data => {
                 setIsLoading(false)
                 if (data.auth_token) {
-                    sessionStorage.setItem('AuthToken', data.auth_token)
+                    sessionStorage.setItem('AuthToken', `Bearer ${data.auth_token}`)
                     sessionStorage.setItem('ExpirationDate', data.expiration_date)
                     sessionStorage.setItem('UserId', data.user_id)
                     document.location = '/menu'

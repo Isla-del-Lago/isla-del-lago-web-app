@@ -25,7 +25,7 @@ export default function ConsumptionsForms(props) {
                     <div key={index}>
                         <label htmlFor={index}>{apartment}
                         </label>
-                        <input type="number" name="" id={index} className="currency-input" />
+                        <input type="number" name="" id={index} className="currency-input" placeholder="0" min={0}/>
                     </div>
                 ))
                 }

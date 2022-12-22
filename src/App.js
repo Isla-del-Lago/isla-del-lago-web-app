@@ -9,6 +9,11 @@ import MainMenu from './Pages/MainMenu';
 import errorIcon from './Assets/error.svg';
 import Alert from './Components/Alert';
 function App() {
+	document.addEventListener("wheel", function(event){
+		if(document.activeElement.type === "number"){
+			document.activeElement.blur();
+		}
+	});
 	return (
 		<div className='App'>
 			<BrowserRouter>

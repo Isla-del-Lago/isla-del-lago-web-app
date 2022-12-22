@@ -1,23 +1,68 @@
-import ButtonsContainer from "../ButtonsContainer";
+import ButtonsContainer from '../ButtonsContainer';
 
 export default function SewerageInfoForm(props) {
+    const {AlcaCfr$, AlcaCrb$, AlcaCrsb$} = props
+    const onChangeValuesHandler=(event)=>{
+        props.onChangeValuesHandler(event)
+    }
     return (
         <>
-            <div className="labels-section">
-                <label htmlFor="">Alcantarillado ($)</label>
-                <label htmlFor="AlcaCfr$" className="sublabel">Cargo fijo residencial</label>
-                <input type="number" name="" id="AlcaCfr$" className="currency-input" />
-                <label htmlFor="AlcaCrb$" className="sublabel">Consumo residencial básico</label>
-                <input type="number" name="" id="AlcaCrb$" className="currency-input" />
-                <label htmlFor="AlcaCrsb$" className="sublabel">Consumo residencial superior a básico</label>
-                <input type="number" name="" id="AlcaCrsb$" className="currency-input" />
-            </div>
-            <ButtonsContainer
-                textButton1='Regresar'
-                textButton2='Guardar'
-                onFirstOptionHandler={props.onGoBack}
-                onSecondOptionHandler={props.onSaveBill}
-            />
+            <form onSubmit={props.onSaveBill} className='bill-form'>
+                <div className='labels-section'>
+                    <label htmlFor=''>Alcantarillado ($)</label>
+                    <label htmlFor='AlcaCfr$' className='sublabel'>
+                        Cargo fijo residencial
+                    </label>
+                    <input
+                        autoFocus
+                        type='number'
+                        name=''
+                        value={AlcaCfr$}
+                        onChange={onChangeValuesHandler}
+                        id='AlcaCfr$'
+                        className='currency-input'
+                        required
+                        step={0.01}
+                        placeholder="$0,0" 
+                        min={0}
+                    />
+                    <label htmlFor='AlcaCrb$' className='sublabel'>
+                        Consumo residencial básico
+                    </label>
+                    <input
+                        type='number'
+                        name=''
+                        value={AlcaCrb$}
+                        onChange={onChangeValuesHandler}
+                        id='AlcaCrb$'
+                        className='currency-input'
+                        required
+                        step={0.01}
+                        placeholder="$0,0" 
+                        min={0}
+                    />
+                    <label htmlFor='AlcaCrsb$' className='sublabel'>
+                        Consumo residencial superior a básico
+                    </label>
+                    <input
+                        type='number'
+                        name=''
+                        value={AlcaCrsb$}
+                        onChange={onChangeValuesHandler}
+                        id='AlcaCrsb$'
+                        className='currency-input'
+                        required
+                        step={0.01}
+                        placeholder="$0,0" 
+                        min={0}
+                    />
+                </div>
+                <ButtonsContainer
+                    textButton1='Regresar'
+                    textButton2='Guardar'
+                    onFirstOptionHandler={props.onGoBack}
+                />
+            </form>
         </>
-    )
+    );
 }
