@@ -1,6 +1,10 @@
 import ButtonsContainer from '../ButtonsContainer';
 
 export default function SewerageInfoForm(props) {
+    const {AlcaCfr$, AlcaCrb$, AlcaCrsb$} = props
+    const onChangeValuesHandler=(event)=>{
+        props.onChangeValuesHandler(event)
+    }
     return (
         <>
             <form onSubmit={props.onSaveBill} className='bill-form'>
@@ -13,10 +17,14 @@ export default function SewerageInfoForm(props) {
                         autoFocus
                         type='number'
                         name=''
+                        value={AlcaCfr$}
+                        onChange={onChangeValuesHandler}
                         id='AlcaCfr$'
                         className='currency-input'
                         required
                         step={0.01}
+                        placeholder="$0,0" 
+                        min={0}
                     />
                     <label htmlFor='AlcaCrb$' className='sublabel'>
                         Consumo residencial básico
@@ -24,10 +32,14 @@ export default function SewerageInfoForm(props) {
                     <input
                         type='number'
                         name=''
+                        value={AlcaCrb$}
+                        onChange={onChangeValuesHandler}
                         id='AlcaCrb$'
                         className='currency-input'
                         required
                         step={0.01}
+                        placeholder="$0,0" 
+                        min={0}
                     />
                     <label htmlFor='AlcaCrsb$' className='sublabel'>
                         Consumo residencial superior a básico
@@ -35,10 +47,14 @@ export default function SewerageInfoForm(props) {
                     <input
                         type='number'
                         name=''
+                        value={AlcaCrsb$}
+                        onChange={onChangeValuesHandler}
                         id='AlcaCrsb$'
                         className='currency-input'
                         required
                         step={0.01}
+                        placeholder="$0,0" 
+                        min={0}
                     />
                 </div>
                 <ButtonsContainer

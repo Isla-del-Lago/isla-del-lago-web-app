@@ -11,15 +11,73 @@ import './CreateBill.css';
 import Loader from '../Components/Loader';
 export default function CreateBill() {
     const [step, setStep] = useState(1);
+    const [lastStep, setLastStep] = useState(false)
     const [billData, setBillData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-    const [loginAlert, setLoginAlert] = useState(0);
+    const [processAlert, setProcessAlert] = useState(0);
+
+    const [startDate, setStartDate] = useState("")
+    const [endDate, setEndDate] = useState("")
+    const [discounts, setDiscounts] = useState()
+    const [cleaning, setCleaning] = useState()
+    const [crbm3, setCrbm3] = useState()
+    const [crsbm3, setCrsbm3] = useState()
+    const [acueCfr$, setAcueCfr$] = useState()
+    const [acueCrb$, setAcueCrb$] = useState()
+    const [acueCrsb$, setAcueCrsb$] = useState()
+    const [alcaCfr$, setAlcaCfr$] = useState()
+    const [alcaCrb$, setAlcaCrb$] = useState()
+    const [alcaCrsb$, setAlcaCrsb$] = useState()
+
+    const changeValuesHandler = (event) => {
+        switch (event.target.id) {
+            case "startDate":
+                setStartDate(event.target.value)
+                break;
+            case "endDate":
+                setEndDate(event.target.value)
+                break;
+            case "discounts":
+                setDiscounts(event.target.value)
+                break;
+            case "cleaning":
+                setCleaning(event.target.value)
+                break;
+            case "crbm3":
+                setCrbm3(event.target.value)
+                break;
+            case "crsbm3":
+                setCrsbm3(event.target.value)
+                break;
+            case "AcueCfr$":
+                setAcueCfr$(event.target.value)
+                break;
+            case "AcueCrb$":
+                setAcueCrb$(event.target.value)
+                break;
+            case "AcueCrsb$":
+                setAcueCrsb$(event.target.value)
+                break;
+            case "AlcaCfr$":
+                setAlcaCfr$(event.target.value)
+                break;
+            case "AlcaCrb$":
+                setAlcaCrb$(event.target.value)
+                break;
+            case "AlcaCrsb$":
+                setAlcaCrsb$(event.target.value)
+                break;
+            default:
+                break;
+        }
+    }
 
     if (!sessionStorage.AuthToken) {
         document.location = '/';
     }
     const stepOneCompleted = (event) => {
         event.preventDefault();
+        setLastStep(false)
         setBillData({
             ...billData,
             start_date: event.target[0].value,
@@ -31,6 +89,7 @@ export default function CreateBill() {
     };
     const stepTwoCompleted = (event) => {
         event.preventDefault();
+        setLastStep(false)
         setBillData({
             ...billData,
             residential_basic_cubic_meters: parseFloat(
@@ -43,6 +102,7 @@ export default function CreateBill() {
         setStep(3);
     };
     const stepThreeCompleted = (event) => {
+        setLastStep(false)
         event.preventDefault();
         setBillData({
             ...billData,
@@ -60,6 +120,7 @@ export default function CreateBill() {
     };
 
     const stepFourCompleted = (event) => {
+        setLastStep(true)
         event.preventDefault();
         setBillData({
             ...billData,
@@ -76,41 +137,41 @@ export default function CreateBill() {
     };
     useEffect(() => {
         setBillData(billData);
-        if (billData.residential_basic_superior_sewerage) {
+        if (billData.residential_basic_superior_sewerage && lastStep) {
             createBillRequest();
         }
-    });
+    }, [billData]);
     const createBillRequest = () => {
-        console.log(billData);
-        // setIsLoading(true)
-        // fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
-        //     {
-        //         method:'POST',
-        //         headers: {
-        //             'user-id': sessionStorage.getItem('UserId'),
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(billData)
-        //     })
-        //     .then((response) => response.json())
-        //     .then(data => {
-        //         setIsLoading(false)
-        //         if (data) {
-
-        //             setLoginAlert(1)
-        //         }
-        //         else {
-        //             setLoginAlert(2)
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     })
+        setIsLoading(true)
+        fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
+            {
+                method: 'POST',
+                headers: {
+                    'user-id': sessionStorage.getItem('UserId'),
+                    'Authorization': sessionStorage.getItem('AuthToken'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(billData)
+            })
+            .then((response) => response.json())
+            .then(data => {
+                setIsLoading(false)
+                if (data.bill_id) {
+                    setProcessAlert(1)
+                }
+                else {
+                    setProcessAlert(2)
+                }
+            })
+            .catch((error) => {
+                setIsLoading(false)
+                setProcessAlert(2)
+            })
     };
     return (
         <>
             {isLoading && <Loader />}
-            {loginAlert === 1 && (
+            {processAlert === 1 && (
                 <Alert
                     image={successIcon}
                     title='Yayy!'
@@ -121,13 +182,17 @@ export default function CreateBill() {
                     }
                 />
             )}
-            {loginAlert === 2 && (
+            {processAlert === 2 && (
                 <Alert
                     image={errorIcon}
                     title='Ooops!'
                     subtitle='Hubo un problema guardando la factura, por favor intenta de nuevo.'
                     footer='Intentar de nuevo'
-                    onCloseAlert={() => (document.location = '/create-bill')}
+                    onCloseAlert={() => {
+                        setStep(1)
+                        setProcessAlert(0)
+                        setIsLoading(false)
+                    }}
                 />
             )}
             {sessionStorage.AuthToken && (
@@ -143,24 +208,40 @@ export default function CreateBill() {
                             <BillInfoForm
                                 onCancel={() => (document.location = '/menu')}
                                 onContinue={stepOneCompleted}
+                                startDate={startDate}
+                                endDate={endDate}
+                                discounts={discounts}
+                                cleaning={cleaning}
+                                onChangeValuesHandler={changeValuesHandler}
                             />
                         )}
                         {step === 2 && (
                             <ConsumptionsInfoForm
                                 onGoBack={() => setStep(1)}
                                 onContinue={stepTwoCompleted}
+                                crbm3={crbm3}
+                                crsbm3={crsbm3}
+                                onChangeValuesHandler={changeValuesHandler}
                             />
                         )}
                         {step === 3 && (
                             <AqueductInfoForm
                                 onGoBack={() => setStep(2)}
                                 onContinue={stepThreeCompleted}
+                                AcueCfr$={acueCfr$}
+                                AcueCrb$={acueCrb$}
+                                AcueCrsb$={acueCrsb$}
+                                onChangeValuesHandler={changeValuesHandler}
                             />
                         )}
                         {step === 4 && (
                             <SewerageInfoForm
                                 onGoBack={() => setStep(3)}
                                 onSaveBill={stepFourCompleted}
+                                AlcaCfr$={alcaCfr$}
+                                AlcaCrb$={alcaCrb$}
+                                AlcaCrsb$={alcaCrsb$}
+                                onChangeValuesHandler={changeValuesHandler}
                             />
                         )}
                     </div>
