@@ -10,6 +10,11 @@ import SewerageInfoForm from '../Components/CreateBillForms/SewerageInfoForm';
 import './CreateBill.css';
 import Loader from '../Components/Loader';
 export default function CreateBill() {
+    
+    if (!sessionStorage.AuthToken) {
+        document.location = '/';
+    }
+    
     const [step, setStep] = useState(1);
     const [lastStep, setLastStep] = useState(false)
     const [billData, setBillData] = useState({});
@@ -70,10 +75,6 @@ export default function CreateBill() {
             default:
                 break;
         }
-    }
-
-    if (!sessionStorage.AuthToken) {
-        document.location = '/';
     }
     const stepOneCompleted = (event) => {
         event.preventDefault();
