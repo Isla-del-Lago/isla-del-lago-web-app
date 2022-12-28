@@ -1,15 +1,45 @@
 {
     "apartments": [
-        "Apartamento 201",
-        "Apartamento 202",
-        "Apartamento 301",
-        "Apartamento 302",
-        "Apartamento 401",
-        "Apartamento 402",
-        "Apartamento 501",
-        "Apartamento 502",
-        "Local 1",
-        "Local 2"
+        {
+            "name": "Apartamento 201",
+            "id": "apartamento_201"
+        },
+        {
+            "name": "Apartamento 202",
+            "id": "apartamento_202"
+        },
+        {
+            "name": "Apartamento 301",
+            "id": "apartamento_301"
+        },
+        {
+            "name": "Apartamento 302",
+            "id": "apartamento_302"
+        },
+        {
+            "name": "Apartamento 401",
+            "id": "apartamento_401"
+        },
+        {
+            "name": "Apartamento 402",
+            "id": "apartamento_402"
+        },
+        {
+            "name": "Apartamento 501",
+            "id": "apartamento_501"
+        },
+        {
+            "name": "Apartamento 502",
+            "id": "apartamento_502"
+        },
+        {
+            "name": "Local 1",
+            "id": "local_1"
+        },
+        {
+            "name": "Local 2",
+            "id": "local_2"
+        }
     ],
     "bills": [
         "25/01/2023-24/03/2023",

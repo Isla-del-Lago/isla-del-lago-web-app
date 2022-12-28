@@ -9,7 +9,6 @@ export default function SelectBillForm(props) {
     const [isLoading, setIsLoading] = useState(false);
     const [processAlert, setProcessAlert] = useState(0);
     const [listOfBills, setListOfBills] = useState([])
-    const [searched, setSearched] = useState([])
     useEffect(() => {
         setIsLoading(true)
         fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
@@ -34,7 +33,6 @@ export default function SelectBillForm(props) {
                     });
                     setListOfBills(listOfBills)
                     props.onSelectFirstBill(listOfBills[0])
-                    setSearched(!searched)
                 }
                 else if (!data[0].bill_id) {
                     setProcessAlert(2)

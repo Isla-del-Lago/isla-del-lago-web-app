@@ -12,6 +12,7 @@ import {
     BarElement,
     BarController,
 } from 'chart.js';
+import { useEffect } from 'react';
 ChartJS.register(
     CategoryScale,
     PointElement,
@@ -23,7 +24,9 @@ ChartJS.register(
 );
 
 export default function ConsumptionsChart(props) {
-    const { values, labels } = props
+    const { fullLabels, fullValues, endDateOfBillSelected, billDetails } = props
+    const labels = fullLabels.slice(fullLabels.length - 4, fullLabels.length)
+    const values = fullValues.slice(fullValues.length - 4, fullValues.length)
     const data = {
         labels,
         datasets: [
@@ -79,10 +82,10 @@ export default function ConsumptionsChart(props) {
     }
     return (
         <div className="chart-container">
-            <img src={arrowIcon} alt={arrowIcon} onClick={props.onGoBack}/>
+            <img src={arrowIcon} alt={arrowIcon} onClick={props.onGoBack} />
             <p className='chart-subtitle'>Total a pagar</p>
-            <h1 className='chart-title' >$120.000,53</h1>
-            <p className='chart-date' >25/11/2022</p>
+            <h1 className='chart-title' >${parseFloat(billDetails.total).toFixed(2)}</h1>
+            <p className='chart-date' >{endDateOfBillSelected}</p>
             <Chart type='bar' options={options} data={data} />
         </div>
     )

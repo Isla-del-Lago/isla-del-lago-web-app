@@ -137,7 +137,6 @@ export default function AddConsumption() {
     }
 
     const addConsumptionsRequest = () => {
-        console.log(consumptionsData);
         setDatesOfBillSelected("")
         setIdOfBillSelected("")
         setIsLoading(true)
@@ -153,7 +152,6 @@ export default function AddConsumption() {
             })
             .then((response) => {
                 setIsLoading(false)
-                console.log(response.status)
                 if (response.status === 201) {
                     setProcessAlert(1)
                 }
