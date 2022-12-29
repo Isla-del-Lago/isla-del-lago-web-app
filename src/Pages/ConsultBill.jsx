@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
-import Alert from '../Components/Alert'
 import ButtonsContainer from '../Components/ButtonsContainer'
 import ConsumptionsChart from '../Components/ConsultBill/ConsumptionsChart'
 import ConsumptionsTable from '../Components/ConsultBill/ConsumptionsTable'
+
 import errorIcon from '../Assets/error.svg';
-import Loader from '../Components/Loader'
+
 import data from '../Utils/data.json'
+import { formatDate, verifyAuth } from '../Utils/GeneralFunctions'
+
+import Alert from '../Components/Alert'
+import Loader from '../Components/Loader'
+
 import './ConsultBill.css'
 
 export default function ConsultBill(props) {
-    if (!sessionStorage.AuthToken) {
-        document.location = '/'
-    }
+    verifyAuth(2)
     const [consulted, setConsulted] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const [processAlert, setProcessAlert] = useState(0);
@@ -34,41 +37,43 @@ export default function ConsultBill(props) {
     }
 
     useEffect(() => {
+        if (verifyAuth(2)) {
         setIsLoading(true)
-        fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
-            {
-                method: 'GET',
-                headers: {
-                    'user-id': sessionStorage.getItem('UserId'),
-                    'Authorization': sessionStorage.getItem('AuthToken'),
-                },
-            })
-            .then((response) => response.json())
-            .then(data => {
-                setIsLoading(false)
-                if (data[0].bill_id && listOfBills.length < data.length) {
-                    data.forEach(bill => {
-                        listOfBills.unshift(
-                            {
-                                fullDate: bill.start_date + " / " + bill.end_date,
-                                endDate: bill.end_date,
-                                bill_id: parseInt(bill.bill_id)
-                            }
-                        )
-                        endDatesOfAllBills.unshift(bill.end_date)
-                    });
-                    setListOfBills(listOfBills)
-                    setEndDateOfBillSelected(listOfBills[0].endDate)
-                    setIdOfBillSelected(listOfBills[0].bill_id)
-                }
-                else if (!data[0].bill_id) {
+            fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
+                {
+                    method: 'GET',
+                    headers: {
+                        'user-id': sessionStorage.getItem('UserId'),
+                        'Authorization': sessionStorage.getItem('AuthToken'),
+                    },
+                })
+                .then((response) => response.json())
+                .then(data => {
+                    setIsLoading(false)
+                    if (data[0].bill_id && listOfBills.length < data.length) {
+                        data.forEach(bill => {
+                            listOfBills.unshift(
+                                {
+                                    fullDate: formatDate(bill.start_date) + " - " + formatDate(bill.end_date),
+                                    endDate: formatDate(bill.end_date),
+                                    bill_id: parseInt(bill.bill_id)
+                                }
+                            )
+                            endDatesOfAllBills.unshift(bill.end_date)
+                        });
+                        setListOfBills(listOfBills)
+                        setEndDateOfBillSelected(listOfBills[0].endDate)
+                        setIdOfBillSelected(listOfBills[0].bill_id)
+                    }
+                    else if (!data[0].bill_id) {
+                        setProcessAlert(2)
+                    }
+                })
+                .catch((error) => {
+                    setIsLoading(false)
                     setProcessAlert(2)
-                }
-            })
-            .catch((error) => {
-                setIsLoading(false)
-                setProcessAlert(2)
-            })
+                })
+        }
     }, [])
 
     const consultBillHandler = (event) => {
@@ -113,7 +118,7 @@ export default function ConsultBill(props) {
                             fullValues.push(bill.consumption_detail.total)
                         }
                         if (labels.length < data.length) {
-                            fullLabels.push(bill.end_date)
+                            fullLabels.push(formatDate(bill.end_date))
                         }
                     });
                     setValues(fullValues)
@@ -157,11 +162,11 @@ export default function ConsultBill(props) {
                     }}
                 />
             )}
-            {!consulted && sessionStorage.AuthToken &&
+            {!consulted && verifyAuth(2) &&
                 <>
                     <div className="consultBill">
                         <div className="consultBill-header">
-                            <h1 className="consultBill-header-title">Informacion de la factura</h1>
+                            <h1 className="consultBill-header-title">Información de factura</h1>
                         </div>
                         <div className="consultBill-body">
                             <form onSubmit={consultBillHandler} className="bill-form">
@@ -198,7 +203,7 @@ export default function ConsultBill(props) {
                 </>
             }
             {
-                consulted && sessionStorage.AuthToken &&
+                consulted && verifyAuth(2) &&
                 <div className="chart-page">
                     <ConsumptionsChart
                         endDateOfBillSelected={endDateOfBillSelected}

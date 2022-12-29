@@ -2,6 +2,8 @@ import ButtonsContainer from '../ButtonsContainer';
 
 export default function SewerageInfoForm(props) {
     const {AlcaCfr$, AlcaCrb$, AlcaCrsb$} = props
+    const inputStep = 0.01
+    const inputPlaceHolder = "$0,0"
     const onChangeValuesHandler=(event)=>{
         props.onChangeValuesHandler(event)
     }
@@ -22,8 +24,8 @@ export default function SewerageInfoForm(props) {
                         id='AlcaCfr$'
                         className='currency-input'
                         required
-                        step={0.01}
-                        placeholder="$0,0" 
+                        step={inputStep}
+                        placeholder={inputPlaceHolder} 
                         min={0}
                     />
                     <label htmlFor='AlcaCrb$' className='sublabel'>
@@ -37,8 +39,8 @@ export default function SewerageInfoForm(props) {
                         id='AlcaCrb$'
                         className='currency-input'
                         required
-                        step={0.01}
-                        placeholder="$0,0" 
+                        step={inputStep}
+                        placeholder={inputPlaceHolder} 
                         min={0}
                     />
                     <label htmlFor='AlcaCrsb$' className='sublabel'>
@@ -52,8 +54,8 @@ export default function SewerageInfoForm(props) {
                         id='AlcaCrsb$'
                         className='currency-input'
                         required
-                        step={0.01}
-                        placeholder="$0,0" 
+                        step={inputStep}
+                        placeholder={inputPlaceHolder} 
                         min={0}
                     />
                 </div>

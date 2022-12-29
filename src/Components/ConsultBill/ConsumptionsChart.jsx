@@ -12,7 +12,7 @@ import {
     BarElement,
     BarController,
 } from 'chart.js';
-import { useEffect } from 'react';
+import { formatCurrency } from '../../Utils/GeneralFunctions';
 ChartJS.register(
     CategoryScale,
     PointElement,
@@ -22,9 +22,6 @@ ChartJS.register(
     BarElement,
     BarController
 );
-let COP = Intl.NumberFormat("de-DE", {
-    currency: "COP",
-});
 
 export default function ConsumptionsChart(props) {
     const { fullLabels, fullValues, endDateOfBillSelected, billDetails } = props
@@ -69,7 +66,7 @@ export default function ConsumptionsChart(props) {
                     font: {
                         size: 10,
                         family: 'Roboto',
-                        // weight: 'bold'
+                        weight: 'bold'
                     }
                 },
             },
@@ -87,7 +84,7 @@ export default function ConsumptionsChart(props) {
         <div className="chart-container">
             <img src={arrowIcon} alt={arrowIcon} onClick={props.onGoBack} />
             <p className='chart-subtitle'>Total a pagar</p>
-            <h1 className='chart-title' >${COP.format(parseFloat(billDetails.total).toFixed(2))}</h1>
+            <h1 className='chart-title' >{formatCurrency(billDetails.total)}</h1>
             <p className='chart-date' >{endDateOfBillSelected}</p>
             <Chart type='bar' options={options} data={data} />
         </div>

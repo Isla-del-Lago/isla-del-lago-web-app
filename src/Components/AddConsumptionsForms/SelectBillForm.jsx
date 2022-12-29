@@ -1,9 +1,9 @@
 import ButtonsContainer from "../ButtonsContainer";
-import data from '../../Utils/data.json'
 import { useEffect, useState } from "react";
 import errorIcon from '../../Assets/error.svg';
 import Alert from "../Alert";
 import Loader from "../Loader";
+import { formatDate } from "../../Utils/GeneralFunctions";
 
 export default function SelectBillForm(props) {
     const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +26,7 @@ export default function SelectBillForm(props) {
                     data.forEach(bill => {
                         listOfBills.unshift(
                             {
-                                fullDate: bill.start_date + " / " + bill.end_date,
+                                fullDate: formatDate(bill.start_date) + " - " + formatDate(bill.end_date),
                                 bill_id: parseInt(bill.bill_id)
                             }
                         )
@@ -52,17 +52,16 @@ export default function SelectBillForm(props) {
                     title='Ooops!'
                     subtitle='Hubo un problema cargando las facturas, por favor intenta de nuevo.'
                     footer='Intentar de nuevo'
-                    redirect={false}
-                    onCloseAlert={() => {
-                        setProcessAlert(0)
-                    }}
+                    redirect={true}
+                    path="/menu"
+                    onCloseAlert={() => { }}
                 />
             )}
             <div className="labels-section">
                 <label htmlFor="bills">Selecciona una factura</label>
                 <select onChange={props.onSetBillSelected} name="bills" id="bills" className="bill-selecter" >
                     {listOfBills.map((bill, index) => (
-                        <option key={index} value={[bill.fullDate,bill.bill_id]}>{bill.fullDate}</option>
+                        <option key={index} value={[bill.fullDate, bill.bill_id]}>{bill.fullDate}</option>
                     ))}
                 </select>
             </div>

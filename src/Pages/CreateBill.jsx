@@ -1,19 +1,22 @@
 import { useEffect, useState } from 'react';
-import Alert from '../Components/Alert';
-import successIcon from '../Assets/success.svg';
-import errorIcon from '../Assets/error.svg';
-import CloseButton from '../Components/CloseButton';
-import AqueductInfoForm from '../Components/CreateBillForms/AqueductInfoForm';
 import BillInfoForm from '../Components/CreateBillForms/BillInfoForm';
 import ConsumptionsInfoForm from '../Components/CreateBillForms/ConsumptionsInfoForm';
+import AqueductInfoForm from '../Components/CreateBillForms/AqueductInfoForm';
 import SewerageInfoForm from '../Components/CreateBillForms/SewerageInfoForm';
-import './CreateBill.css';
-import Loader from '../Components/Loader';
-export default function CreateBill() {
 
-    if (!sessionStorage.AuthToken) {
-        document.location = '/';
-    }
+import successIcon from '../Assets/success.svg';
+import errorIcon from '../Assets/error.svg';
+
+import { verifyAuth } from '../Utils/GeneralFunctions';
+
+import CloseButton from '../Components/CloseButton';
+import Alert from '../Components/Alert';
+import Loader from '../Components/Loader';
+
+import './CreateBill.css';
+
+export default function CreateBill() {
+    verifyAuth(2)
 
     const [step, setStep] = useState(1);
     const [lastStep, setLastStep] = useState(false)
@@ -197,7 +200,7 @@ export default function CreateBill() {
                     }}
                 />
             )}
-            {sessionStorage.AuthToken && (
+            {verifyAuth(2) && (
                 <div className='createBill'>
                     <div className='createBill-header'>
                         {step > 1 && <CloseButton path={'/menu'} />}

@@ -1,20 +1,21 @@
-import './MainMenu.css'
+import { Link } from 'react-router-dom'
+
 import billIcon from '../Assets/bill_icon.png'
 import createBillIcon from '../Assets/create_bill_icon.png'
 import consumptionIcom from '../Assets/add_consumption.png'
-import { Link } from 'react-router-dom'
+
+import { closeSessionHandler, verifyAuth } from '../Utils/GeneralFunctions'
+
 import CloseButton from '../Components/CloseButton'
+
+import './MainMenu.css'
+
 export default function MainMenu() {
-    const closeSessionHandler = () => {
-        sessionStorage.clear()
-        document.location = '/'
-    }
-    if (!sessionStorage.AuthToken) {
-        document.location = '/'
-    }
+    verifyAuth(2)
+
     return (
         <>
-            {sessionStorage.AuthToken && <div className="mainMenu">
+            {verifyAuth(2) && <div className="mainMenu">
                 <div className="mainMenu-header">
                     <div className="" onClick={closeSessionHandler}>
                         <CloseButton />

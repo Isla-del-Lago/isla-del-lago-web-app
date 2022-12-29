@@ -2,6 +2,7 @@ import ButtonsContainer from '../ButtonsContainer';
 
 export default function ConsumptionsInfoForm(props) {
     const {crbm3, crsbm3} = props
+    const inputStep = 0.01
     const onChangeValuesHandler=(event)=>{
         props.onChangeValuesHandler(event)
     }
@@ -21,7 +22,7 @@ export default function ConsumptionsInfoForm(props) {
                         onChange={onChangeValuesHandler}
                         id='crbm3'
                         required
-                        step={0.01}
+                        step={inputStep}
                         placeholder="0"
                         min={0}
                     />
@@ -35,7 +36,7 @@ export default function ConsumptionsInfoForm(props) {
                         onChange={onChangeValuesHandler}
                         id='crsbm3'
                         required
-                        step={0.01}
+                        step={inputStep}
                         placeholder="0"
                         min={0}
                     />
