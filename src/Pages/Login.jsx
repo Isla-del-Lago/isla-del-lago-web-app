@@ -48,6 +48,7 @@ export default function Login() {
                 title='Ooops!'
                 subtitle='Ingresaste mal tus datos, por favor intenta de nuevo.'
                 footer='Intentar de nuevo'
+                redirect={false}
                 onCloseAlert={() => setLoginAlert(false)}
             />}
             <div className="login">

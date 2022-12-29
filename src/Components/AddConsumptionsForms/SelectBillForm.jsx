@@ -52,6 +52,7 @@ export default function SelectBillForm(props) {
                     title='Ooops!'
                     subtitle='Hubo un problema cargando las facturas, por favor intenta de nuevo.'
                     footer='Intentar de nuevo'
+                    redirect={false}
                     onCloseAlert={() => {
                         setProcessAlert(0)
                     }}

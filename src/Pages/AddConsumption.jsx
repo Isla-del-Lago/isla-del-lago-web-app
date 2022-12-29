@@ -173,9 +173,9 @@ export default function AddConsumption() {
                     title='Yayy!'
                     subtitle='Consumos guardados exitosamente.'
                     footer='Continuar'
-                    onCloseAlert={() =>
-                        (document.location = '/menu')
-                    }
+                    redirect={true}
+                    path="/menu"
+                    onCloseAlert={() => { }}
                 />
             )}
             {processAlert === 2 && (
@@ -184,6 +184,7 @@ export default function AddConsumption() {
                     title='Ooops!'
                     subtitle='Hubo un problema guardando los consumos, por favor intenta de nuevo.'
                     footer='Intentar de nuevo'
+                    redirect={false}
                     onCloseAlert={() => {
                         setStep(1)
                         setProcessAlert(0)
