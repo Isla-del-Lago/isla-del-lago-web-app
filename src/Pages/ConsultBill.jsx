@@ -27,7 +27,7 @@ export default function ConsultBill(props) {
 
     const [values, setValues] = useState([])
     const [labels, setLabels] = useState([])
-    const onGoBackHandler = () =>{
+    const onGoBackHandler = () => {
         setConsulted(false)
         setValues([])
         setLabels([])
@@ -82,17 +82,17 @@ export default function ConsultBill(props) {
             },
         }).then((response) => response.json())
             .then(data => {
-                if (data.total) {
+                if (data.total >= 0) {
                     setIsLoading(false)
                     setBillDetails(data)
                 }
                 else if (!data.total) {
-                    setProcessAlert(2)
+                    setProcessAlert(3)
                 }
             })
             .catch((error) => {
                 setIsLoading(false)
-                setProcessAlert(2)
+                setProcessAlert(3)
             })
 
 
@@ -120,12 +120,12 @@ export default function ConsultBill(props) {
                     setLabels(fullLabels)
                 }
                 else if (data[0].bill_id) {
-                    setProcessAlert(2)
+                    setProcessAlert(3)
                 }
             })
             .catch((error) => {
                 setIsLoading(false)
-                setProcessAlert(2)
+                setProcessAlert(3)
             })
         setConsulted(true)
     }
@@ -137,10 +137,23 @@ export default function ConsultBill(props) {
                 <Alert
                     image={errorIcon}
                     title='Ooops!'
+                    subtitle='Hubo un problema cargando las facturas, por favor intenta de nuevo.'
+                    footer='Intentar de nuevo'
+                    redirect={true}
+                    path="/menu"
+                    onCloseAlert={() => { }}
+                />
+            )}
+            {processAlert === 3 && (
+                <Alert
+                    image={errorIcon}
+                    title='Ooops!'
                     subtitle='Hubo un problema cargando la información, por favor intenta de nuevo.'
                     footer='Intentar de nuevo'
+                    redirect={false}
                     onCloseAlert={() => {
                         setProcessAlert(0)
+                        setConsulted(false)
                     }}
                 />
             )}
