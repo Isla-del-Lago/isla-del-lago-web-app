@@ -70,6 +70,7 @@
   justify-content: space-between;
 }
 .screenShot-container .chart-buttons-container {
+  max-width: var(--max-width);
   position: relative;
   z-index: 5;
 }
@@ -137,6 +138,7 @@
   position: absolute;
   width: 100%;
   background-color: var(--background-layer);
+  max-width: var(--max-width);
 }
 .screenShot-container canvas {
   transform: scale(0.9);
