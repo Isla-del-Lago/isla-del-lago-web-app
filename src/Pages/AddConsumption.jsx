@@ -1,20 +1,21 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
-import ConsumptionsForms from '../Components/AddConsumptionsForms/ConsumptionsForms'
+import { useEffect,useState } from 'react'
 import SelectBillForm from '../Components/AddConsumptionsForms/SelectBillForm'
+import ConsumptionsForms from '../Components/AddConsumptionsForms/ConsumptionsForms'
+
 import successIcon from '../Assets/success.svg';
 import errorIcon from '../Assets/error.svg';
-import Alert from '../Components/Alert'
-import CloseButton from '../Components/CloseButton'
-import Loader from '../Components/Loader'
+
 import data from '../Utils/data.json'
+import { verifyAuth } from '../Utils/GeneralFunctions';
+
+import CloseButton from '../Components/CloseButton'
+import Alert from '../Components/Alert'
+import Loader from '../Components/Loader'
+
 import './AddConsumption.css'
+
 export default function AddConsumption() {
-
-    if (!sessionStorage.AuthToken) {
-        document.location = '/'
-    }
-
+    verifyAuth(2)
     const [step, setStep] = useState(1)
     const [consumptionStep, setConsumptionStep] = useState(1)
     const [datesOfBillSelected, setDatesOfBillSelected] = useState("")
@@ -192,7 +193,7 @@ export default function AddConsumption() {
                     }}
                 />
             )}
-            {sessionStorage.AuthToken && <div className="addConsumption">
+            {verifyAuth(2) && <div className="addConsumption">
                 <div className="addConsumption-header">
                     {step > 1 && <CloseButton path={'/menu'} />}
                     <h1 className="addConsumption-header-title">Informacion de consumo</h1>

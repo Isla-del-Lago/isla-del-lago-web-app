@@ -1,10 +1,17 @@
-import './Login.css'
-import loginImage from '../Assets/Login.png'
 import { useState } from 'react'
-import Loader from '../Components/Loader'
-import Alert from '../Components/Alert'
+
+import loginImage from '../Assets/Login.png'
 import warningIcon from '../Assets/warning.svg';
+
+import { verifyAuth } from '../Utils/GeneralFunctions';
+
+import Alert from '../Components/Alert'
+import Loader from '../Components/Loader'
+
+import './Login.css'
+
 export default function Login() {
+    verifyAuth(1)
     const [isLoading, setIsLoading] = useState(false)
     const [loginAlert, setLoginAlert] = useState(false)
 
@@ -51,7 +58,7 @@ export default function Login() {
                 redirect={false}
                 onCloseAlert={() => setLoginAlert(false)}
             />}
-            <div className="login">
+            {verifyAuth(1) && <div className="login">
                 <div className="login-header">
                     <h1 className="login-header-title">Bienvenido</h1>
                     <h3 className="login-header-subtitle">Por favor ingresa para utilizar la aplicacion</h3>
@@ -69,7 +76,7 @@ export default function Login() {
                         </button>
                     </form>
                 </div>
-            </div>
+            </div>}
         </>
     )
 }

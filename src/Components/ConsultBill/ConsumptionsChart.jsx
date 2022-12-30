@@ -1,6 +1,7 @@
 import React from 'react';
 import { Chart } from 'react-chartjs-2';
 import arrowIcon from '../../Assets/back_arrow.svg'
+import shareIcon from '../../Assets/share.svg'
 
 import {
     Chart as ChartJS,
@@ -12,7 +13,7 @@ import {
     BarElement,
     BarController,
 } from 'chart.js';
-import { useEffect } from 'react';
+import { formatCurrency } from '../../Utils/GeneralFunctions';
 ChartJS.register(
     CategoryScale,
     PointElement,
@@ -22,9 +23,6 @@ ChartJS.register(
     BarElement,
     BarController
 );
-let COP = Intl.NumberFormat("de-DE", {
-    currency: "COP",
-});
 
 export default function ConsumptionsChart(props) {
     const { fullLabels, fullValues, endDateOfBillSelected, billDetails } = props
@@ -69,7 +67,7 @@ export default function ConsumptionsChart(props) {
                     font: {
                         size: 10,
                         family: 'Roboto',
-                        // weight: 'bold'
+                        weight: 'bold'
                     }
                 },
             },
@@ -85,9 +83,12 @@ export default function ConsumptionsChart(props) {
     }
     return (
         <div className="chart-container">
-            <img src={arrowIcon} alt={arrowIcon} onClick={props.onGoBack} />
+            <div className="chart-buttons-container">
+                <img id='chartButton' src={arrowIcon} alt={arrowIcon} onClick={props.onGoBack} />
+                <img id='chartButton' src={shareIcon} alt={shareIcon} onClick={props.onShare} />
+            </div>
             <p className='chart-subtitle'>Total a pagar</p>
-            <h1 className='chart-title' >${COP.format(parseFloat(billDetails.total).toFixed(2))}</h1>
+            <h1 className='chart-title' >{formatCurrency(billDetails.total)}</h1>
             <p className='chart-date' >{endDateOfBillSelected}</p>
             <Chart type='bar' options={options} data={data} />
         </div>

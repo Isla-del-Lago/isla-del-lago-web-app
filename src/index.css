@@ -33,7 +33,8 @@ body {
 
 .addConsumption,
 .consultBill,
-.createBill {
+.createBill,
+.chart-page {
   height: 90%;
   width: 100%;
   max-width: var(--max-width);
