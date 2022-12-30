@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import html2canvas from 'html2canvas';
 import ButtonsContainer from '../Components/ButtonsContainer'
 import ConsumptionsChart from '../Components/ConsultBill/ConsumptionsChart'
 import ConsumptionsTable from '../Components/ConsultBill/ConsumptionsTable'
+import ScreenShotPreview from '../Components/ConsultBill/ScreenShotPreview';
 
 import errorIcon from '../Assets/error.svg';
 
@@ -13,11 +15,13 @@ import Loader from '../Components/Loader'
 
 import './ConsultBill.css'
 
+
 export default function ConsultBill(props) {
     verifyAuth(2)
     const [consulted, setConsulted] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const [processAlert, setProcessAlert] = useState(0);
+    const [screenShotTaked, setScreenShotTaked] = useState(false)
     const [listOfBills, setListOfBills] = useState([])
 
     const [endDatesOfAllBills, setEndDatesOfAllBills] = useState([])
@@ -30,15 +34,37 @@ export default function ConsultBill(props) {
 
     const [values, setValues] = useState([])
     const [labels, setLabels] = useState([])
+    const [screenShot, setScreenShot] = useState()
     const onGoBackHandler = () => {
         setConsulted(false)
         setValues([])
         setLabels([])
     }
+    const onShareHandler = () => {
+        setScreenShotTaked(true)
+        html2canvas(document.querySelector("#resume"), {
+            ignoreElements: function (element) {
+                if (element.id == 'chartButton') {
+                    return true;
+                }
+            },
+            height: document.body.scrollHeight,
+        }).then(canvas => {
+            setScreenShot(canvas.toDataURL("image/png").replace("image/jpeg", "image/octet-stream"));
+            //mostrar screenShot
+            document.querySelector("#screenShot-container").appendChild(canvas)
+            //mostrar screenShot
+
+            //compartir via Wapp
+            // a.href = `https://wa.me/send?text=Ya casi`
+            //compartir via Wapp
+
+        });
+    }
 
     useEffect(() => {
         if (verifyAuth(2)) {
-        setIsLoading(true)
+            setIsLoading(true)
             fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
                 {
                     method: 'GET',
@@ -204,11 +230,22 @@ export default function ConsultBill(props) {
             }
             {
                 consulted && verifyAuth(2) &&
-                <div className="chart-page">
+                <div className="chart-page" id="resume">
+
+                    {screenShotTaked &&
+                        <ScreenShotPreview
+                            screenShot={screenShot}
+                            nameOfApartmentSelected={nameOfApartmentSelected}
+                            endDateOfBillSelected={endDateOfBillSelected}
+                            onGoBack={()=>{
+                                setScreenShotTaked(false)
+                            }}
+                        />}
                     <ConsumptionsChart
                         endDateOfBillSelected={endDateOfBillSelected}
                         billDetails={billDetails}
                         onGoBack={onGoBackHandler}
+                        onShare={onShareHandler}
                         fullLabels={labels}
                         fullValues={values}
                     />
@@ -216,6 +253,7 @@ export default function ConsultBill(props) {
                         nameOfApartmentSelected={nameOfApartmentSelected}
                         billDetails={billDetails}
                     />
+
                 </div>
             }
         </>

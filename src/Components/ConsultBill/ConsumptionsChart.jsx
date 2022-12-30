@@ -1,6 +1,7 @@
 import React from 'react';
 import { Chart } from 'react-chartjs-2';
 import arrowIcon from '../../Assets/back_arrow.svg'
+import shareIcon from '../../Assets/share.svg'
 
 import {
     Chart as ChartJS,
@@ -82,7 +83,10 @@ export default function ConsumptionsChart(props) {
     }
     return (
         <div className="chart-container">
-            <img src={arrowIcon} alt={arrowIcon} onClick={props.onGoBack} />
+            <div className="chart-buttons-container">
+                <img id='chartButton' src={arrowIcon} alt={arrowIcon} onClick={props.onGoBack} />
+                <img id='chartButton' src={shareIcon} alt={shareIcon} onClick={props.onShare} />
+            </div>
             <p className='chart-subtitle'>Total a pagar</p>
             <h1 className='chart-title' >{formatCurrency(billDetails.total)}</h1>
             <p className='chart-date' >{endDateOfBillSelected}</p>
