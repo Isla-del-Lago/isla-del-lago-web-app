@@ -2,6 +2,7 @@
     position: absolute;
     z-index: 1;
     width: 100%;
+    max-width: var(--max-width);
     height: 100%;
     background-color: var(--background-layer);
     display: flex;

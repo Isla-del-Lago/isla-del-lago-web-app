@@ -1,9 +1,12 @@
-import ButtonsContainer from "../ButtonsContainer";
 import { useEffect, useState } from "react";
+import ButtonsContainer from "../ButtonsContainer";
+
 import errorIcon from '../../Assets/error.svg';
+
 import Alert from "../Alert";
 import Loader from "../Loader";
-import { formatDate } from "../../Utils/GeneralFunctions";
+
+import { formatDate, closeSessionHandler } from "../../Utils/GeneralFunctions";
 
 export default function SelectBillForm(props) {
     const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +22,12 @@ export default function SelectBillForm(props) {
                     'Authorization': sessionStorage.getItem('AuthToken'),
                 },
             })
-            .then((response) => response.json())
+            .then((response) => {
+                if (response.status === 401) {
+                    closeSessionHandler()
+                }
+                return response.json()
+            })
             .then(data => {
                 setIsLoading(false)
                 if (data[0].bill_id && listOfBills.length < data.length) {
@@ -39,6 +47,7 @@ export default function SelectBillForm(props) {
                 }
             })
             .catch((error) => {
+                console.log(error);
                 setIsLoading(false)
                 setProcessAlert(2)
             })
