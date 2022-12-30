@@ -8,12 +8,16 @@ import Login from './Pages/Login';
 import MainMenu from './Pages/MainMenu';
 import errorIcon from './Assets/error.svg';
 import Alert from './Components/Alert';
+import { refreshToken } from './Utils/GeneralFunctions';
 function App() {
 	document.addEventListener("wheel", function(event){
 		if(document.activeElement.type === "number"){
 			document.activeElement.blur();
 		}
 	});
+	document.querySelector("body").addEventListener("click", function (event) {
+		refreshToken()
+	})
 	return (
 		<div className='App'>
 			<BrowserRouter>
