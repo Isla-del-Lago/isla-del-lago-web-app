@@ -7,7 +7,7 @@ import SewerageInfoForm from '../Components/CreateBillForms/SewerageInfoForm';
 import successIcon from '../Assets/success.svg';
 import errorIcon from '../Assets/error.svg';
 
-import { verifyAuth } from '../Utils/GeneralFunctions';
+import { closeSessionHandler, verifyAuth } from '../Utils/GeneralFunctions';
 
 import CloseButton from '../Components/CloseButton';
 import Alert from '../Components/Alert';
@@ -157,7 +157,12 @@ export default function CreateBill() {
                 },
                 body: JSON.stringify(billData)
             })
-            .then((response) => response.json())
+            .then((response) => {
+                if (response.status === 401) {
+                    closeSessionHandler()
+                }
+                return response.json()
+            })
             .then(data => {
                 setIsLoading(false)
                 if (data.bill_id) {

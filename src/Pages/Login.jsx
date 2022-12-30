@@ -3,7 +3,7 @@ import { useState } from 'react'
 import loginImage from '../Assets/Login.png'
 import warningIcon from '../Assets/warning.svg';
 
-import { verifyAuth } from '../Utils/GeneralFunctions';
+import { closeSessionHandler, verifyAuth } from '../Utils/GeneralFunctions';
 
 import Alert from '../Components/Alert'
 import Loader from '../Components/Loader'
@@ -30,7 +30,12 @@ export default function Login() {
                 },
                 body: JSON.stringify(userData)
             })
-            .then((response) => response.json())
+            .then((response) => {
+                if (response.status === 401) {
+                    closeSessionHandler()
+                }
+                return response.json()
+            })
             .then(data => {
                 setIsLoading(false)
                 if (data.auth_token) {

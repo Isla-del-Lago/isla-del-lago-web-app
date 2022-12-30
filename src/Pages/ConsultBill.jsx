@@ -8,7 +8,7 @@ import ScreenShotPreview from '../Components/ConsultBill/ScreenShotPreview';
 import errorIcon from '../Assets/error.svg';
 
 import data from '../Utils/data.json'
-import { formatDate, verifyAuth } from '../Utils/GeneralFunctions'
+import { closeSessionHandler, formatDate, verifyAuth } from '../Utils/GeneralFunctions'
 
 import Alert from '../Components/Alert'
 import Loader from '../Components/Loader'
@@ -73,7 +73,12 @@ export default function ConsultBill(props) {
                         'Authorization': sessionStorage.getItem('AuthToken'),
                     },
                 })
-                .then((response) => response.json())
+                .then((response) => {
+                    if (response.status === 401) {
+                        closeSessionHandler()
+                    }
+                    return response.json()
+                })
                 .then(data => {
                     setIsLoading(false)
                     if (data[0].bill_id && listOfBills.length < data.length) {
@@ -111,7 +116,13 @@ export default function ConsultBill(props) {
                 'user-id': sessionStorage.getItem('UserId'),
                 'Authorization': sessionStorage.getItem('AuthToken'),
             },
-        }).then((response) => response.json())
+        })
+            .then((response) => {
+                if (response.status === 401) {
+                    closeSessionHandler()
+                }
+                return response.json()
+            })
             .then(data => {
                 if (data.total >= 0) {
                     setIsLoading(false)
@@ -133,7 +144,13 @@ export default function ConsultBill(props) {
                 'user-id': sessionStorage.getItem('UserId'),
                 'Authorization': sessionStorage.getItem('AuthToken'),
             },
-        }).then((response) => response.json())
+        })
+            .then((response) => {
+                if (response.status === 401) {
+                    closeSessionHandler()
+                }
+                return response.json()
+            })
             .then(data => {
                 let fullValues = []
                 let fullLabels = []
@@ -237,7 +254,7 @@ export default function ConsultBill(props) {
                             screenShot={screenShot}
                             nameOfApartmentSelected={nameOfApartmentSelected}
                             endDateOfBillSelected={endDateOfBillSelected}
-                            onGoBack={()=>{
+                            onGoBack={() => {
                                 setScreenShotTaked(false)
                             }}
                         />}

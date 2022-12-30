@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import SelectBillForm from '../Components/AddConsumptionsForms/SelectBillForm'
 import ConsumptionsForms from '../Components/AddConsumptionsForms/ConsumptionsForms'
 
@@ -6,7 +6,7 @@ import successIcon from '../Assets/success.svg';
 import errorIcon from '../Assets/error.svg';
 
 import data from '../Utils/data.json'
-import { verifyAuth } from '../Utils/GeneralFunctions';
+import { closeSessionHandler, verifyAuth } from '../Utils/GeneralFunctions';
 
 import CloseButton from '../Components/CloseButton'
 import Alert from '../Components/Alert'
@@ -153,6 +153,9 @@ export default function AddConsumption() {
             })
             .then((response) => {
                 setIsLoading(false)
+                if (response.status === 401) {
+                    closeSessionHandler()
+                }
                 if (response.status === 201) {
                     setProcessAlert(1)
                 }
