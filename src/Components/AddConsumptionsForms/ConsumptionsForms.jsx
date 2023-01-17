@@ -2,6 +2,8 @@ import data from '../../Utils/data.json'
 import ButtonsContainer from "../ButtonsContainer";
 
 export default function ConsumptionsForms(props) {
+    const inputStep = 0.01
+    const inputPlaceHolder = "0,0"
     const {
         billSelected,
         currentStep,
@@ -38,7 +40,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="apto201"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                         <label htmlFor="apto202">Apartamento 202</label>
                         <input
@@ -49,7 +52,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="apto202"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                     </div>
                 }
@@ -65,7 +69,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="apto301"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                         <label htmlFor="apto302">Apartamento 302</label>
                         <input
@@ -76,7 +81,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="apto302"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                     </div>
                 }
@@ -92,7 +98,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="apto401"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                         <label htmlFor="apto402">Apartamento 402</label>
                         <input
@@ -103,7 +110,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="apto402"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                     </div>
                 }
@@ -119,7 +127,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="apto501"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                         <label htmlFor="apto502">Apartamento 502</label>
                         <input
@@ -130,7 +139,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="apto502"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                     </div>
                 }
@@ -146,7 +156,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="local1"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                         <label htmlFor="local2">Local 2</label>
                         <input
@@ -157,7 +168,8 @@ export default function ConsumptionsForms(props) {
                             onChange={onChangeValuesHandler}
                             id="local2"
                             className="currency-input"
-                            placeholder="0"
+                            step={inputStep} 
+                            placeholder={inputPlaceHolder}
                             min={0} />
                     </div>
                 }
