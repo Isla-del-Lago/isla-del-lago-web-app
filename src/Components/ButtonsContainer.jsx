@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './ButtonsContainer.css'
 export default function ButtonsContainer(props) {
     const { textButton1, textButton2, path } = props
@@ -17,4 +18,9 @@ export default function ButtonsContainer(props) {
             </div>
         </>
     )
+}
+ButtonsContainer.propTypes = {
+    textButton1: PropTypes.string.isRequired,
+    textButton2: PropTypes.string.isRequired,
+    path: PropTypes.string
 }

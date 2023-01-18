@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './Alert.css'
 export default function Alert(props) {
     const { image, title, subtitle, footer, redirect, path } = props
@@ -26,4 +27,13 @@ export default function Alert(props) {
             </div>
         </>
     )
+}
+
+Alert.propTypes = {
+    image: PropTypes.any.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    footer: PropTypes.string.isRequired,
+    redirect: PropTypes.bool,
+    path: PropTypes.string
 }
