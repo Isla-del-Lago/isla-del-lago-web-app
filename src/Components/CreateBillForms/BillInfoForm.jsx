@@ -1,11 +1,12 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import ButtonsContainer from "../ButtonsContainer";
 
 export default function BillInfoForm(props) {
     const inputStep = 0.01
     const inputPlaceHolder = "$0,0"
-    const {startDate, endDate,discounts,cleaning} = props
-    const onChangeValuesHandler=(event)=>{
+    const { startDate, endDate, discounts, cleaning } = props
+    const onChangeValuesHandler = (event) => {
         props.onChangeValuesHandler(event)
     }
 
@@ -32,4 +33,13 @@ export default function BillInfoForm(props) {
             </form>
         </>
     )
+}
+BillInfoForm.propTypes = {
+    startDate: PropTypes.string,
+    endDate: PropTypes.string,
+    discounts: PropTypes.string,
+    cleaning: PropTypes.string,
+    onContinue: PropTypes.func,
+    onCancel: PropTypes.func,
+    onChangeValuesHandler: PropTypes.func
 }

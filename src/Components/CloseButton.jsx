@@ -11,5 +11,5 @@ export default function CloseButton(props) {
     )
 }
 CloseButton.propTypes = {
-    path: PropTypes.string.isRequired
+    path: PropTypes.string
 }

@@ -1,10 +1,10 @@
 import ButtonsContainer from "../ButtonsContainer";
-
+import PropTypes from 'prop-types'
 export default function AqueductInfoForm(props) {
     const inputStep = 0.01
     const inputPlaceHolder = "$0,0"
-    const {AcueCfr$, AcueCrb$, AcueCrsb$} = props
-    const onChangeValuesHandler=(event)=>{
+    const { AcueCfr$, AcueCrb$, AcueCrsb$ } = props
+    const onChangeValuesHandler = (event) => {
         props.onChangeValuesHandler(event)
     }
     return (
@@ -13,11 +13,11 @@ export default function AqueductInfoForm(props) {
                 <div className="labels-section">
                     <label htmlFor="">Acueducto ($)</label>
                     <label htmlFor="AcueCfr$" className="sublabel">Cargo fijo residencial</label>
-                    <input value={AcueCfr$} onChange={onChangeValuesHandler} autoFocus type="number" name="" id="AcueCfr$" className="currency-input"  required step={inputStep} placeholder={inputPlaceHolder} min={0}/>
+                    <input value={AcueCfr$} onChange={onChangeValuesHandler} autoFocus type="number" name="" id="AcueCfr$" className="currency-input" required step={inputStep} placeholder={inputPlaceHolder} min={0} />
                     <label htmlFor="AcueCrb$" className="sublabel">Consumo residencial básico</label>
-                    <input value={AcueCrb$} onChange={onChangeValuesHandler} type="number" name="" id="AcueCrb$" className="currency-input"  required step={inputStep} placeholder={inputPlaceHolder} min={0}/>
+                    <input value={AcueCrb$} onChange={onChangeValuesHandler} type="number" name="" id="AcueCrb$" className="currency-input" required step={inputStep} placeholder={inputPlaceHolder} min={0} />
                     <label htmlFor="AcueCrsb$" className="sublabel">Consumo residencial superior a básico</label>
-                    <input value={AcueCrsb$} onChange={onChangeValuesHandler} type="number" name="" id="AcueCrsb$" className="currency-input"  required step={inputStep} placeholder={inputPlaceHolder} min={0}/>
+                    <input value={AcueCrsb$} onChange={onChangeValuesHandler} type="number" name="" id="AcueCrsb$" className="currency-input" required step={inputStep} placeholder={inputPlaceHolder} min={0} />
                 </div>
                 <ButtonsContainer
                     textButton1='Regresar'
@@ -27,4 +27,12 @@ export default function AqueductInfoForm(props) {
             </form>
         </>
     )
+}
+AqueductInfoForm.propTypes = {
+    AcueCfr$: PropTypes.string,
+    AcueCrb$: PropTypes.string,
+    AcueCrsb$: PropTypes.string,
+    onContinue: PropTypes.func,
+    onGoBack: PropTypes.func,
+    onChangeValuesHandler: PropTypes.func
 }

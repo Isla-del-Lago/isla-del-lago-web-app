@@ -1,5 +1,6 @@
 import React from 'react';
 import { Chart } from 'react-chartjs-2';
+import PropTypes from 'prop-types'
 import arrowIcon from '../../Assets/back_arrow.svg'
 import shareIcon from '../../Assets/share.svg'
 
@@ -43,7 +44,6 @@ export default function ConsumptionsChart(props) {
             {
                 type: 'bar',
                 label: 'Barra',
-
                 backgroundColor: 'rgb(255,255,255,0.2)',
                 data: values.map((data) => data),
                 borderColor: 'rgb(255,255,255,0.2)',
@@ -93,4 +93,11 @@ export default function ConsumptionsChart(props) {
             <Chart type='bar' options={options} data={data} />
         </div>
     )
+}
+
+ConsumptionsChart.propTypes = {
+    fullLabels: PropTypes.array.isRequired,
+    fullValues: PropTypes.array.isRequired,
+    endDateOfBillSelected: PropTypes.string.isRequired,
+    billDetails: PropTypes.object.isRequired,
 }
