@@ -35,5 +35,6 @@ Alert.propTypes = {
     subtitle: PropTypes.string.isRequired,
     footer: PropTypes.string.isRequired,
     redirect: PropTypes.bool,
-    path: PropTypes.string
+    path: PropTypes.string,
+    onCloseAlert: PropTypes.func
 }

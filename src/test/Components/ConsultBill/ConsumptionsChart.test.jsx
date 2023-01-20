@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import ConsumptionsChart from '../../../Components/ConsultBill/ConsumptionsChart';
 describe('Test on ConsumptionsChart component', () => {
     // const labels = ['17/10/2022', '17/10/2022', '17/10/2022', '17/10/2022', '17/10/2022', '17/10/2022']
@@ -18,12 +19,12 @@ describe('Test on ConsumptionsChart component', () => {
     //     "total": 0.0
     // }
     test('', () => {
-    //     render(<ConsumptionsChart
-    //         fullLabels={labels}
-    //         fullValues={values}
-    //         endDateOfBillSelected={[labels[0]]}
-    //         billDetails={billDetails}
-    //     />)
+        // render(<ConsumptionsChart
+        //     fullLabels={labels}
+        //     fullValues={values}
+        //     endDateOfBillSelected={labels[0]}
+        //     billDetails={billDetails}
+        // />, { wrapper: MemoryRouter })
         // screen.debug()
     })
 })

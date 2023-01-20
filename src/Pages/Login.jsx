@@ -16,12 +16,12 @@ export default function Login() {
     const [loginAlert, setLoginAlert] = useState(false)
 
     const submitHandler = (event) => {
+        event.preventDefault()
         setIsLoading(true)
         const userData = {
             email: event.target[0].value,
             password: event.target[1].value
         }
-        event.preventDefault()
         fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/security/login',
             {
                 method: 'POST',
@@ -72,7 +72,7 @@ export default function Login() {
                     <div className="image-container">
                         <img className="login-image" src={loginImage} alt="" />
                     </div>
-                    <form className="login-form" onSubmit={submitHandler}>
+                    <form className="login-form" onSubmit={submitHandler} aria-label="form" >
                         <input type="text" placeholder="Correo" required />
                         <input type="password" placeholder="Contraseña" required />
                         <p>¿Olvidaste tu contraseña?</p>
