@@ -24,9 +24,9 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Login />} />
 					<Route path='/menu' element={<MainMenu />} />
-					<Route path='/create-bill' element={<CreateBill />} />
-					<Route path='/add-consumption' element={<AddConsumption />} />
-					<Route path='/consult-bill' element={<ConsultBill />} />
+					<Route path='/create-bill' element={<CreateBill verifyNumber={2} />} />
+					<Route path='/add-consumption' element={<AddConsumption verifyNumber={2} />} />
+					<Route path='/consult-bill' element={<ConsultBill verifyNumber={2} />} />
 					<Route
 						path='/alert'
 						element={

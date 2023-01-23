@@ -1,4 +1,5 @@
 import { formatCurrency } from "../../Utils/GeneralFunctions";
+import PropTypes from 'prop-types'
 export default function ConsumptionsTable(props) {
     const { billDetails, nameOfApartmentSelected } = props
     return (
@@ -49,4 +50,9 @@ export default function ConsumptionsTable(props) {
             </div>
         </>
     )
+}
+
+ConsumptionsTable.propTypes = {
+    billDetails: PropTypes.object.isRequired,
+    nameOfApartmentSelected: PropTypes.string.isRequired
 }

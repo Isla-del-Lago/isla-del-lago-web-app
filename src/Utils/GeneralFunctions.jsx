@@ -12,24 +12,27 @@ const formatCurrency = (value) => {
     return `$${COP.format(parseFloat(value).toFixed(2))}`
 }
 const verifyAuth = (type) => {
-    if (type === 1) {
-        if (!sessionStorage.AuthToken) {
+    switch (type) {
+        case 1:
+            if (!sessionStorage.AuthToken) {
+                return true
+            }
+            else {
+                document.location = '/menu'
+                return false
+            }
+        case 2:
+            if (sessionStorage.AuthToken) {
+                return true
+            }
+            else {
+                document.location = '/'
+                return false
+            }
+        case 3:
             return true
-        }
-        else {
-            document.location = '/menu'
-            return false
-        }
-    }
-
-    else if (type === 2) {
-        if (sessionStorage.AuthToken) {
-            return true
-        }
-        else {
-            document.location = '/'
-            return false
-        }
+        default:
+            return false;
     }
 }
 
@@ -38,9 +41,10 @@ const closeSessionHandler = () => {
     document.location = '/'
 }
 
-const refreshToken = () => {
-    if (sessionStorage.getItem("AuthToken")) {
-        var token = sessionStorage.getItem("AuthToken").replace("Bearer ", "");
+const refreshToken = (testToken) => {
+    const tokenForDecoded = sessionStorage.getItem("AuthToken") || testToken
+    if (tokenForDecoded) {
+        var token = tokenForDecoded.replace("Bearer ", "");
         var decoded = jwt_decode(token);
         var expirationDate = (decoded.exp * 1000) - 60000
         var currentDate = Date.now()
