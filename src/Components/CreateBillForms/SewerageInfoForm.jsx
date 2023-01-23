@@ -16,10 +16,9 @@ export default function SewerageInfoForm(props) {
                         Cargo fijo residencial
                     </label>
                     <input
-                        autoFocus
                         type='number'
                         name=''
-                        value={AlcaCfr$}
+                        value={AlcaCfr$ || ""}
                         onChange={onChangeValuesHandler}
                         id='AlcaCfr$'
                         className='currency-input'
@@ -34,7 +33,7 @@ export default function SewerageInfoForm(props) {
                     <input
                         type='number'
                         name=''
-                        value={AlcaCrb$}
+                        value={AlcaCrb$ || ""}
                         onChange={onChangeValuesHandler}
                         id='AlcaCrb$'
                         className='currency-input'
@@ -49,7 +48,7 @@ export default function SewerageInfoForm(props) {
                     <input
                         type='number'
                         name=''
-                        value={AlcaCrsb$}
+                        value={AlcaCrsb$ || ""}
                         onChange={onChangeValuesHandler}
                         id='AlcaCrsb$'
                         className='currency-input'

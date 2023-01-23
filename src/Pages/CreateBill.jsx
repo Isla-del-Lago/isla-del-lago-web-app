@@ -15,8 +15,8 @@ import Loader from '../Components/Loader';
 
 import './CreateBill.css';
 
-export default function CreateBill() {
-    verifyAuth(2)
+export default function CreateBill({verifyNumber}) {
+    verifyAuth(verifyNumber)
 
     const [step, setStep] = useState(1);
     const [lastStep, setLastStep] = useState(false)
@@ -84,10 +84,10 @@ export default function CreateBill() {
         setLastStep(false)
         setBillData({
             ...billData,
-            start_date: event.target[0].value,
-            end_date: event.target[1].value,
-            discounts: parseFloat(parseFloat(event.target[2].value).toFixed(2)),
-            cleaning: parseFloat(parseFloat(event.target[3].value).toFixed(2)),
+            start_date: startDate,
+            end_date: endDate,
+            discounts: parseFloat(parseFloat(discounts).toFixed(2)),
+            cleaning: parseFloat(parseFloat(cleaning).toFixed(2)),
         });
         setStep(2);
     };
@@ -97,10 +97,10 @@ export default function CreateBill() {
         setBillData({
             ...billData,
             residential_basic_cubic_meters: parseFloat(
-                parseFloat(event.target[0].value).toFixed(2)
+                parseFloat(crbm3).toFixed(2)
             ),
             residential_basic_superior_cubic_meters: parseFloat(
-                parseFloat(event.target[1].value).toFixed(2)
+                parseFloat(crsbm3).toFixed(2)
             ),
         });
         setStep(3);
@@ -111,13 +111,13 @@ export default function CreateBill() {
         setBillData({
             ...billData,
             residential_fixed_aqueduct: parseFloat(
-                parseFloat(event.target[0].value).toFixed(2)
+                parseFloat(acueCfr$).toFixed(2)
             ),
             residential_basic_aqueduct: parseFloat(
-                parseFloat(event.target[1].value).toFixed(2)
+                parseFloat(acueCrb$).toFixed(2)
             ),
             residential_basic_superior_aqueduct: parseFloat(
-                parseFloat(event.target[2].value).toFixed(2)
+                parseFloat(acueCrsb$).toFixed(2)
             ),
         });
         setStep(4);
@@ -129,13 +129,13 @@ export default function CreateBill() {
         setBillData({
             ...billData,
             residential_fixed_sewerage: parseFloat(
-                parseFloat(event.target[0].value).toFixed(2)
+                parseFloat(alcaCfr$).toFixed(2)
             ),
             residential_basic_sewerage: parseFloat(
-                parseFloat(event.target[1].value).toFixed(2)
+                parseFloat(alcaCrb$).toFixed(2)
             ),
             residential_basic_superior_sewerage: parseFloat(
-                parseFloat(event.target[2].value).toFixed(2)
+                parseFloat(alcaCrsb$).toFixed(2)
             ),
         });
     };
@@ -205,7 +205,7 @@ export default function CreateBill() {
                     }}
                 />
             )}
-            {verifyAuth(2) && (
+            {verifyAuth(verifyNumber) && (
                 <div className='createBill'>
                     <div className='createBill-header'>
                         {step > 1 && <CloseButton path={'/menu'} />}

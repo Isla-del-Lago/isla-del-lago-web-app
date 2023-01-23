@@ -15,10 +15,9 @@ export default function ConsumptionsInfoForm(props) {
                         Consumo residencial básico
                     </label>
                     <input
-                        autoFocus
                         type='number'
                         name=''
-                        value={crbm3}
+                        value={crbm3 || ''}
                         onChange={onChangeValuesHandler}
                         id='crbm3'
                         required
@@ -32,7 +31,7 @@ export default function ConsumptionsInfoForm(props) {
                     <input
                         type='number'
                         name=''
-                        value={crsbm3}
+                        value={crsbm3 || ''}
                         onChange={onChangeValuesHandler}
                         id='crsbm3'
                         required

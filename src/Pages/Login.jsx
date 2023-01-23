@@ -14,13 +14,14 @@ export default function Login() {
     verifyAuth(1)
     const [isLoading, setIsLoading] = useState(false)
     const [loginAlert, setLoginAlert] = useState(false)
-
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const submitHandler = (event) => {
         event.preventDefault()
         setIsLoading(true)
         const userData = {
-            email: event.target[0].value,
-            password: event.target[1].value
+            email,
+            password
         }
         fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/security/login',
             {
@@ -73,8 +74,8 @@ export default function Login() {
                         <img className="login-image" src={loginImage} alt="" />
                     </div>
                     <form className="login-form" onSubmit={submitHandler} aria-label="form" >
-                        <input type="text" placeholder="Correo" required />
-                        <input type="password" placeholder="Contraseña" required />
+                        <input onChange={(event) => setEmail(event.target.value)} type="text" placeholder="Correo" required />
+                        <input onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Contraseña" required />
                         <p>¿Olvidaste tu contraseña?</p>
                         <button type="submit" className="button-form">
                             Ingresar

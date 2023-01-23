@@ -8,7 +8,7 @@ describe('Test on Login page', () => {
         const { container } = render(<Login />);
         expect(container).toMatchSnapshot()
     });
-    test('Should change inputs', () => {
+    test('Should login correctly', () => {
         render(<Login />);
         const emailInput = screen.getByPlaceholderText('Correo')
         const passwordInput = screen.getByPlaceholderText('Contraseña')
@@ -16,5 +16,15 @@ describe('Test on Login page', () => {
         fireEvent.change(emailInput, { target: { value: 'admin@isla-del-lago.com' } })
         fireEvent.change(passwordInput, { target: { value: 'Prueba123' } })
         expect(passwordInput.value).toBe('Prueba123')
+        fireEvent.submit(form)
+    })
+    test('Should login fail', () => {
+        render(<Login />);
+        const emailInput = screen.getByPlaceholderText('Correo')
+        const passwordInput = screen.getByPlaceholderText('Contraseña')
+        const form = screen.getByRole('form')
+        fireEvent.change(emailInput, { target: { value: 'administrador@isla-del-lago.com' } })
+        fireEvent.change(passwordInput, { target: { value: 'Prueba123' } })
+        fireEvent.submit(form)
     })
 });

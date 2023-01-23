@@ -16,8 +16,8 @@ import Loader from '../Components/Loader'
 import './ConsultBill.css'
 
 
-export default function ConsultBill(props) {
-    verifyAuth(2)
+export default function ConsultBill({verifyNumber}) {
+    verifyAuth(verifyNumber)
     const [consulted, setConsulted] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const [processAlert, setProcessAlert] = useState(0);
@@ -63,7 +63,7 @@ export default function ConsultBill(props) {
     }
 
     useEffect(() => {
-        if (verifyAuth(2)) {
+        if (verifyAuth(verifyNumber)) {
             setIsLoading(true)
             fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
                 {
@@ -205,7 +205,7 @@ export default function ConsultBill(props) {
                     }}
                 />
             )}
-            {!consulted && verifyAuth(2) &&
+            {!consulted && verifyAuth(verifyNumber) &&
                 <>
                     <div className="consultBill">
                         <div className="consultBill-header">
@@ -246,7 +246,7 @@ export default function ConsultBill(props) {
                 </>
             }
             {
-                consulted && verifyAuth(2) &&
+                consulted && verifyAuth(verifyNumber) &&
                 <div className="chart-page" id="resume">
 
                     {screenShotTaked &&

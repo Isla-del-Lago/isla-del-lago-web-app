@@ -14,8 +14,8 @@ import Loader from '../Components/Loader'
 
 import './AddConsumption.css'
 
-export default function AddConsumption() {
-    verifyAuth(2)
+export default function AddConsumption({verifyNumber}) {
+    verifyAuth(verifyNumber)
     const [step, setStep] = useState(1)
     const [consumptionStep, setConsumptionStep] = useState(1)
     const [datesOfBillSelected, setDatesOfBillSelected] = useState("")
@@ -196,7 +196,7 @@ export default function AddConsumption() {
                     }}
                 />
             )}
-            {verifyAuth(2) && <div className="addConsumption">
+            {verifyAuth(verifyNumber) && <div className="addConsumption">
                 <div className="addConsumption-header">
                     {step > 1 && <CloseButton path={'/menu'} />}
                     <h1 className="addConsumption-header-title">Informacion de consumo</h1>
