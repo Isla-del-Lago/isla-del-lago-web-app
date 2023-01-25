@@ -14,7 +14,7 @@ import Loader from '../Components/Loader'
 
 import './AddConsumption.css'
 
-export default function AddConsumption({verifyNumber}) {
+export default function AddConsumption({ verifyNumber }) {
     verifyAuth(verifyNumber)
     const [step, setStep] = useState(1)
     const [consumptionStep, setConsumptionStep] = useState(1)
@@ -119,12 +119,22 @@ export default function AddConsumption({verifyNumber}) {
                 }
             ]
         })
-    }, [formCompleted])
+    }, [formCompleted,
+        consumptionApto201,
+        consumptionApto202,
+        consumptionApto301,
+        consumptionApto302,
+        consumptionApto401,
+        consumptionApto402,
+        consumptionApto501,
+        consumptionApto502,
+        consumptionLocal1,
+        consumptionLocal2])
 
     const handleBillSelected = (event) => {
         event.preventDefault()
         setConsumptionStep(1)
-        datesOfBillSelected != "" ?
+        datesOfBillSelected !== "" ?
             setStep(2) : setStep(1)
     }
     const handleNextConsumptionStep = (event) => {
