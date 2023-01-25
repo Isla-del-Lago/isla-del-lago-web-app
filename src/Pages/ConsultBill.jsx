@@ -24,7 +24,7 @@ export default function ConsultBill({verifyNumber}) {
     const [screenShotTaked, setScreenShotTaked] = useState(false)
     const [listOfBills, setListOfBills] = useState([])
 
-    const [endDatesOfAllBills, setEndDatesOfAllBills] = useState([])
+    const endDatesOfAllBills = []
     const [billDetails, setBillDetails] = useState({})
 
     const [endDateOfBillSelected, setEndDateOfBillSelected] = useState("")
@@ -44,7 +44,7 @@ export default function ConsultBill({verifyNumber}) {
         setScreenShotTaked(true)
         html2canvas(document.querySelector("#resume"), {
             ignoreElements: function (element) {
-                if (element.id == 'chartButton') {
+                if (element.id === 'chartButton') {
                     return true;
                 }
             },
@@ -221,7 +221,7 @@ export default function ConsultBill({verifyNumber}) {
                                     }}
                                         id="bills" className="bill-selecter">
                                         {listOfBills.map((bill, index) => (
-                                            <option selected={idOfBillSelected == bill.bill_id ? "selected" : ""} key={index} value={[bill.fullDate, bill.endDate, bill.bill_id]}>{bill.fullDate}</option>
+                                            <option selected={parseInt(idOfBillSelected) === bill.bill_id ? "selected" : ""} key={index} value={[bill.fullDate, bill.endDate, bill.bill_id]}>{bill.fullDate}</option>
                                         ))}
                                     </select>
                                     <label htmlFor="apartments">Selecciona un apartamento - local</label>

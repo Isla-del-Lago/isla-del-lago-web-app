@@ -1,72 +1,70 @@
 .mainMenu-header {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    margin: 2rem auto 6rem;
-    position: relative;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto 6rem;
+  position: relative;
 }
 
 .mainMenu-header-title {
-    display: inline;
-    font-weight: 700;
-    color: var(--principal-color);
-    font-size: 3rem;
+  display: inline;
+  font-weight: 700;
+  color: var(--principal-color);
+  font-size: 3rem;
 }
 
 .mainMenu-header-username {
-    display: inline;
-    font-weight: 700;
-    color: var(--principal-color);
-    font-size: 3rem;
-    margin-bottom: 10px;
+  display: inline;
+  font-weight: 700;
+  color: var(--principal-color);
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
 .mainMenu-header-subtitle {
-    display: inline;
-    font-weight: 400;
-    font-size: 1.3rem;
+  display: inline;
+  font-weight: 400;
+  font-size: 1.3rem;
 }
 
 .mainMenu-body {
-    height: 70%;
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-start;
+  height: 70%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
 }
 
 .operations-container {
-    margin: 0 auto;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    height: w;
-    display: grid;
-    grid-template-columns: 45% 45%;
-    grid-template-rows: 45% 45%;
-    column-gap: 10px;
-    row-gap: 15px;
-    flex-wrap: wrap;
-    font-family: var(--principal-font);
-    font-weight: bolder;
-    font-size: 1.3rem;
-    justify-content: space-evenly;
+  margin: 0 auto;
+  width: 100%;
+  height: w;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--principal-font);
+  font-weight: bolder;
+  font-size: 1.3rem;
+  justify-content: space-evenly;
 }
 
 .operation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--principal-color);
-    padding: 1.8rem;
-    color: white;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: var(--principal-color);
+  padding: 1.5rem;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  margin: 5px 0;
+}
+.operation img {
+  width: 50px;
 }
 
 .operation p {
-    margin-top: 1rem;
-    text-align: center;
+  margin: 0 3rem;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
