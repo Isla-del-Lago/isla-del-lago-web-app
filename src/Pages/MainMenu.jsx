@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import jwt_decode from "jwt-decode";
 
-import billIcon from '../Assets/bill_icon.png'
-import createBillIcon from '../Assets/create_bill_icon.png'
-import consumptionIcom from '../Assets/add_consumption.png'
-import userIcon from '../Assets/user_icon.png'
+import billIcon from '../Assets/bill_icon.svg'
+import createBillIcon from '../Assets/create_bill_icon.svg'
+import consumptionIcom from '../Assets/add_consumption.svg'
+import userIcon from '../Assets/user_icon.svg'
 
 import { closeSessionHandler, verifyAuth } from '../Utils/GeneralFunctions'
 
