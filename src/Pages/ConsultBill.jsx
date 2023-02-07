@@ -65,7 +65,7 @@ export default function ConsultBill({verifyNumber}) {
     useEffect(() => {
         if (verifyAuth(verifyNumber)) {
             setIsLoading(true)
-            fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
+            fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_BILL_PATH}`,
                 {
                     method: 'GET',
                     headers: {
@@ -110,7 +110,7 @@ export default function ConsultBill({verifyNumber}) {
     const consultBillHandler = (event) => {
         event.preventDefault()
         setIsLoading(true)
-        fetch(`https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/consumption/details?bill_id=${idOfBillSelected}&apartment_id=${idOfApartmentSelected}`, {
+        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_CONSUMPTION_PATH}/details?bill_id=${idOfBillSelected}&apartment_id=${idOfApartmentSelected}`, {
             method: 'GET',
             headers: {
                 'user-id': sessionStorage.getItem('UserId'),
@@ -138,7 +138,7 @@ export default function ConsultBill({verifyNumber}) {
             })
 
 
-        fetch(`https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/consumption/details/apartment/${idOfApartmentSelected}`, {
+        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_CONSUMPTION_PATH}/details/apartment/${idOfApartmentSelected}`, {
             method: 'GET',
             headers: {
                 'user-id': sessionStorage.getItem('UserId'),

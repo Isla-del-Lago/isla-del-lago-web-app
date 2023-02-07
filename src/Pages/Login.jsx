@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import loginImage from '../Assets/Login.png'
 import warningIcon from '../Assets/warning.svg';
+import errorIcon from '../Assets/error.svg';
 
 import { closeSessionHandler, verifyAuth } from '../Utils/GeneralFunctions';
 
@@ -14,6 +15,7 @@ export default function Login() {
     verifyAuth(1)
     const [isLoading, setIsLoading] = useState(false)
     const [loginAlert, setLoginAlert] = useState(false)
+    const [errorAlert, setErrorAlert] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const submitHandler = (event) => {
@@ -23,7 +25,7 @@ export default function Login() {
             email,
             password
         }
-        fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/security/login',
+        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_SECURITY_PATH}/login`,
             {
                 method: 'POST',
                 headers: {
@@ -50,7 +52,8 @@ export default function Login() {
                 }
             })
             .catch((error) => {
-                console.error('Error:', error);
+                setIsLoading(false)
+                setErrorAlert(true)
             })
     }
     return (
@@ -63,6 +66,14 @@ export default function Login() {
                 footer='Intentar de nuevo'
                 redirect={false}
                 onCloseAlert={() => setLoginAlert(false)}
+            />}
+            {errorAlert && <Alert
+                image={errorIcon}
+                title='Ooops!'
+                subtitle='Estamos presentando fallas.'
+                footer='Intentar de nuevo'
+                redirect={false}
+                onCloseAlert={() => setErrorAlert(false)}
             />}
             {verifyAuth(1) && <div className="login">
                 <div className="login-header">
