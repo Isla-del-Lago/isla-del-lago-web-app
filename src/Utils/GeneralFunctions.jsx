@@ -50,7 +50,7 @@ const refreshToken = (testToken) => {
         var currentDate = Date.now()
     }
     if (currentDate > expirationDate) {
-        fetch("https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/security/token/refresh", {
+        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_SECURITY_PATH}/token/refresh`, {
             method: 'POST',
             headers: {
                 'user-id': sessionStorage.getItem('UserId'),

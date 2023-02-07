@@ -147,7 +147,7 @@ export default function CreateBill({verifyNumber}) {
     }, [billData]);
     const createBillRequest = () => {
         setIsLoading(true)
-        fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
+        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_BILL_PATH}`,
             {
                 method: 'POST',
                 headers: {

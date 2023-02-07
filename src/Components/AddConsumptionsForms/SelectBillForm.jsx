@@ -14,7 +14,7 @@ export default function SelectBillForm(props) {
     const [listOfBills, setListOfBills] = useState([])
     useEffect(() => {
         setIsLoading(true)
-        fetch('https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/bill',
+        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_BILL_PATH}`,
             {
                 method: 'GET',
                 headers: {

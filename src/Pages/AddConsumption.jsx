@@ -151,7 +151,7 @@ export default function AddConsumption({ verifyNumber }) {
         setDatesOfBillSelected("")
         setIdOfBillSelected("")
         setIsLoading(true)
-        fetch(`https://isla-del-lago-app-develop.herokuapp.com/isla-del-lago/api/v1/consumption/?bill_id=${idOfBillSelected}`,
+        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_CONSUMPTION_PATH}/?bill_id=${idOfBillSelected}`,
             {
                 method: 'POST',
                 headers: {
