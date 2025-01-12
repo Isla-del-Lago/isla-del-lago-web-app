@@ -242,6 +242,7 @@ export default function AddConsumption({ verifyNumber }) {
                                 setIdOfBillSelected("")
                             } : handlePrevConsumptionStep}
                             onChangeValuesHandler={changeValuesHandler}
+                            selectedBillId={idOfBillSelected}
                         />}
                     </form>
                 </div>
