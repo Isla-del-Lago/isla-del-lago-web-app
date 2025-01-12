@@ -1,7 +1,7 @@
 import ButtonsContainer from '../ButtonsContainer';
 import PropTypes from 'prop-types'
 export default function ConsumptionsInfoForm(props) {
-    const { crbm3, crsbm3 } = props
+    const { crbm3, crsbm3, cnrm3 } = props
     const inputStep = 0.01
     const onChangeValuesHandler = (event) => {
         props.onChangeValuesHandler(event)
@@ -39,6 +39,20 @@ export default function ConsumptionsInfoForm(props) {
                         placeholder="0"
                         min={0}
                     />
+                    <label htmlFor='cnrm3' className='sublabel'>
+                        Consumo no residencial
+                    </label>
+                    <input
+                        type='number'
+                        name=''
+                        value={cnrm3 || ''}
+                        onChange={onChangeValuesHandler}
+                        id='cnrm3'
+                        required
+                        step={inputStep}
+                        placeholder="0"
+                        min={0}
+                    />
                 </div>
                 <ButtonsContainer
                     textButton1='Regresar'
@@ -52,6 +66,7 @@ export default function ConsumptionsInfoForm(props) {
 ConsumptionsInfoForm.propTypes = {
     crbm3: PropTypes.string,
     crsbm3: PropTypes.string,
+    cnrm3: PropTypes.string,
     onContinue: PropTypes.func,
     onGoBack: PropTypes.func,
     onChangeValuesHandler: PropTypes.func

@@ -224,7 +224,7 @@ export default function ConsultBill({verifyNumber}) {
                                             <option selected={parseInt(idOfBillSelected) === bill.bill_id ? "selected" : ""} key={index} value={[bill.fullDate, bill.endDate, bill.bill_id]}>{bill.fullDate}</option>
                                         ))}
                                     </select>
-                                    <label htmlFor="apartments">Selecciona un apartamento - local</label>
+                                    <label htmlFor="apartments">Selecciona una unidad</label>
                                     <select name="apartments" onChange={(event) => {
                                         setIdOfApartmentSelected(event.target.value.split(",")[0])
                                         setNameOfApartmentSelected(event.target.value.split(",")[1])

@@ -30,12 +30,17 @@ export default function CreateBill({verifyNumber}) {
     const [cleaning, setCleaning] = useState()
     const [crbm3, setCrbm3] = useState()
     const [crsbm3, setCrsbm3] = useState()
+    const [cnrm3, setCnrm3] = useState()
     const [acueCfr$, setAcueCfr$] = useState()
     const [acueCrb$, setAcueCrb$] = useState()
     const [acueCrsb$, setAcueCrsb$] = useState()
+    const [acueCfnr$, setAcueCfnr$] = useState()
+    const [acueCnr$, setAcueCnr$] = useState()
     const [alcaCfr$, setAlcaCfr$] = useState()
     const [alcaCrb$, setAlcaCrb$] = useState()
     const [alcaCrsb$, setAlcaCrsb$] = useState()
+    const [alcaCfnr$, setAlcaCfnr$] = useState()
+    const [alcaCnr$, setAlcaCnr$] = useState()
 
     const changeValuesHandler = (event) => {
         switch (event.target.id) {
@@ -57,6 +62,9 @@ export default function CreateBill({verifyNumber}) {
             case "crsbm3":
                 setCrsbm3(event.target.value)
                 break;
+            case "cnrm3":
+                setCnrm3(event.target.value)
+                break;
             case "AcueCfr$":
                 setAcueCfr$(event.target.value)
                 break;
@@ -66,6 +74,12 @@ export default function CreateBill({verifyNumber}) {
             case "AcueCrsb$":
                 setAcueCrsb$(event.target.value)
                 break;
+            case "AcueCfnr$":
+                setAcueCfnr$(event.target.value)
+                break;
+            case "AcueCnr$":
+                setAcueCnr$(event.target.value)
+                break;
             case "AlcaCfr$":
                 setAlcaCfr$(event.target.value)
                 break;
@@ -74,6 +88,12 @@ export default function CreateBill({verifyNumber}) {
                 break;
             case "AlcaCrsb$":
                 setAlcaCrsb$(event.target.value)
+                break;
+            case "AlcaCfnr$":
+                setAlcaCfnr$(event.target.value)
+                break;
+            case "AlcaCnr$":
+                setAlcaCnr$(event.target.value)
                 break;
             default:
                 break;
@@ -102,6 +122,9 @@ export default function CreateBill({verifyNumber}) {
             residential_basic_superior_cubic_meters: parseFloat(
                 parseFloat(crsbm3).toFixed(2)
             ),
+            not_residential_cubic_meters: parseFloat(
+                parseFloat(cnrm3).toFixed(2)
+            )
         });
         setStep(3);
     };
@@ -118,6 +141,12 @@ export default function CreateBill({verifyNumber}) {
             ),
             residential_basic_superior_aqueduct: parseFloat(
                 parseFloat(acueCrsb$).toFixed(2)
+            ),
+            not_residential_fixed_aqueduct: parseFloat(
+                parseFloat(acueCfnr$).toFixed(2)
+            ),
+            not_residential_aqueduct: parseFloat(
+                parseFloat(acueCnr$).toFixed(2)
             ),
         });
         setStep(4);
@@ -137,11 +166,18 @@ export default function CreateBill({verifyNumber}) {
             residential_basic_superior_sewerage: parseFloat(
                 parseFloat(alcaCrsb$).toFixed(2)
             ),
+            not_residential_fixed_sewerage: parseFloat(
+                parseFloat(alcaCfnr$).toFixed(2)
+            ),
+            not_residential_sewerage: parseFloat(
+                parseFloat(alcaCnr$).toFixed(2)
+            ),
         });
+        console.log(billData)
     };
     useEffect(() => {
         setBillData(billData);
-        if (billData.residential_basic_superior_sewerage && lastStep) {
+        if ((billData.residential_basic_superior_sewerage || billData.residential_basic_superior_sewerage == 0) && lastStep) {
             createBillRequest();
         }
     }, [billData]);
@@ -231,6 +267,7 @@ export default function CreateBill({verifyNumber}) {
                                 onContinue={stepTwoCompleted}
                                 crbm3={crbm3}
                                 crsbm3={crsbm3}
+                                cnrm3={cnrm3}
                                 onChangeValuesHandler={changeValuesHandler}
                             />
                         )}
@@ -241,6 +278,8 @@ export default function CreateBill({verifyNumber}) {
                                 AcueCfr$={acueCfr$}
                                 AcueCrb$={acueCrb$}
                                 AcueCrsb$={acueCrsb$}
+                                AcueCfnr$={acueCfnr$}
+                                AcueCnr$={acueCnr$}
                                 onChangeValuesHandler={changeValuesHandler}
                             />
                         )}
@@ -251,6 +290,8 @@ export default function CreateBill({verifyNumber}) {
                                 AlcaCfr$={alcaCfr$}
                                 AlcaCrb$={alcaCrb$}
                                 AlcaCrsb$={alcaCrsb$}
+                                AlcaCfnr$={alcaCfnr$}
+                                AlcaCnr$={alcaCnr$}
                                 onChangeValuesHandler={changeValuesHandler}
                             />
                         )}

@@ -39,6 +39,10 @@
         {
             "name": "Local 2",
             "id": "local_2"
+        },
+        {
+            "name": "Total",
+            "id": "total"
         }
     ],
     "bills": [
