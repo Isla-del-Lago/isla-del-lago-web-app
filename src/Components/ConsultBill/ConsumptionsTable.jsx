@@ -49,7 +49,7 @@ export default function ConsumptionsTable(props) {
                 </div>
                 <div className="consumption-table-row">
                     <p className="consumption-table-item-name">Descuentos adicionales</p>
-                    <p className="consumption-table-item-value">{formatCurrency(billDetails.additionalDiscounts)}</p>
+                    <p className="consumption-table-item-value">{formatCurrency(billDetails.additional_discounts)}</p>
                 </div>
                 <div className="consumption-table-row">
                     <p className="consumption-table-item-name">Otros cobros no residenciales</p>
