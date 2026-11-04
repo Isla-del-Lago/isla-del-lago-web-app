@@ -1,0 +1,29 @@
+.userMenu-header {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto 0rem;
+    position: relative;
+}
+
+.userMenu-header-title {
+    display: inline;
+    font-weight: 700;
+    color: var(--principal-color);
+    font-size: 3rem;
+}
+
+.userMenu-header-subtitle {
+    display: inline;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: rgb(110, 110, 110);
+}
+
+.billList {
+    width: 90%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}

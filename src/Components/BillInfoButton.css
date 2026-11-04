@@ -1,0 +1,44 @@
+.billList-bill_resume {
+    display: flex;
+    background-color: rgb(250, 250, 250);
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.billList-bill_resume-bill_data {
+    width: 70%;
+}
+
+.bill_data-title {
+    margin-bottom: 0.5rem;
+}
+
+.bill_data-title p {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.bill_data-info p {
+    color: rgb(110, 110, 110);
+}
+
+.billList-bill_resume-bill_price {
+    display: flex;
+    margin: auto;
+}
+
+.billList-bill_resume-bill_price p {
+    margin: auto;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.bill_right-arrow {
+    display: flex;
+}
+
+.bill_right-arrow img {
+    width: 1rem;
+    margin: auto;
+}

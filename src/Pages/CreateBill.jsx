@@ -15,93 +15,93 @@ import Loader from '../Components/Loader';
 
 import './CreateBill.css';
 
-export default function CreateBill({verifyNumber}) {
-    verifyAuth(verifyNumber)
+export default function CreateBill({ verifyNumber }) {
+    verifyAuth(verifyNumber);
 
     const [step, setStep] = useState(1);
-    const [lastStep, setLastStep] = useState(false)
+    const [lastStep, setLastStep] = useState(false);
     const [billData, setBillData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [processAlert, setProcessAlert] = useState(0);
 
-    const [startDate, setStartDate] = useState("")
-    const [endDate, setEndDate] = useState("")
-    const [discounts, setDiscounts] = useState()
-    const [cleaning, setCleaning] = useState()
-    const [crbm3, setCrbm3] = useState()
-    const [crsbm3, setCrsbm3] = useState()
-    const [cnrm3, setCnrm3] = useState()
-    const [acueCfr$, setAcueCfr$] = useState()
-    const [acueCrb$, setAcueCrb$] = useState()
-    const [acueCrsb$, setAcueCrsb$] = useState()
-    const [acueCfnr$, setAcueCfnr$] = useState()
-    const [acueCnr$, setAcueCnr$] = useState()
-    const [alcaCfr$, setAlcaCfr$] = useState()
-    const [alcaCrb$, setAlcaCrb$] = useState()
-    const [alcaCrsb$, setAlcaCrsb$] = useState()
-    const [alcaCfnr$, setAlcaCfnr$] = useState()
-    const [alcaCnr$, setAlcaCnr$] = useState()
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [discounts, setDiscounts] = useState();
+    const [cleaning, setCleaning] = useState();
+    const [crbm3, setCrbm3] = useState();
+    const [crsbm3, setCrsbm3] = useState();
+    const [cnrm3, setCnrm3] = useState();
+    const [acueCfr$, setAcueCfr$] = useState();
+    const [acueCrb$, setAcueCrb$] = useState();
+    const [acueCrsb$, setAcueCrsb$] = useState();
+    const [acueCfnr$, setAcueCfnr$] = useState();
+    const [acueCnr$, setAcueCnr$] = useState();
+    const [alcaCfr$, setAlcaCfr$] = useState();
+    const [alcaCrb$, setAlcaCrb$] = useState();
+    const [alcaCrsb$, setAlcaCrsb$] = useState();
+    const [alcaCfnr$, setAlcaCfnr$] = useState();
+    const [alcaCnr$, setAlcaCnr$] = useState();
 
-    const changeValuesHandler = (event) => {
+    const changeValuesHandler = event => {
         switch (event.target.id) {
-            case "startDate":
-                setStartDate(event.target.value)
+            case 'startDate':
+                setStartDate(event.target.value);
                 break;
-            case "endDate":
-                setEndDate(event.target.value)
+            case 'endDate':
+                setEndDate(event.target.value);
                 break;
-            case "discounts":
-                setDiscounts(event.target.value)
+            case 'discounts':
+                setDiscounts(event.target.value);
                 break;
-            case "cleaning":
-                setCleaning(event.target.value)
+            case 'cleaning':
+                setCleaning(event.target.value);
                 break;
-            case "crbm3":
-                setCrbm3(event.target.value)
+            case 'crbm3':
+                setCrbm3(event.target.value);
                 break;
-            case "crsbm3":
-                setCrsbm3(event.target.value)
+            case 'crsbm3':
+                setCrsbm3(event.target.value);
                 break;
-            case "cnrm3":
-                setCnrm3(event.target.value)
+            case 'cnrm3':
+                setCnrm3(event.target.value);
                 break;
-            case "AcueCfr$":
-                setAcueCfr$(event.target.value)
+            case 'AcueCfr$':
+                setAcueCfr$(event.target.value);
                 break;
-            case "AcueCrb$":
-                setAcueCrb$(event.target.value)
+            case 'AcueCrb$':
+                setAcueCrb$(event.target.value);
                 break;
-            case "AcueCrsb$":
-                setAcueCrsb$(event.target.value)
+            case 'AcueCrsb$':
+                setAcueCrsb$(event.target.value);
                 break;
-            case "AcueCfnr$":
-                setAcueCfnr$(event.target.value)
+            case 'AcueCfnr$':
+                setAcueCfnr$(event.target.value);
                 break;
-            case "AcueCnr$":
-                setAcueCnr$(event.target.value)
+            case 'AcueCnr$':
+                setAcueCnr$(event.target.value);
                 break;
-            case "AlcaCfr$":
-                setAlcaCfr$(event.target.value)
+            case 'AlcaCfr$':
+                setAlcaCfr$(event.target.value);
                 break;
-            case "AlcaCrb$":
-                setAlcaCrb$(event.target.value)
+            case 'AlcaCrb$':
+                setAlcaCrb$(event.target.value);
                 break;
-            case "AlcaCrsb$":
-                setAlcaCrsb$(event.target.value)
+            case 'AlcaCrsb$':
+                setAlcaCrsb$(event.target.value);
                 break;
-            case "AlcaCfnr$":
-                setAlcaCfnr$(event.target.value)
+            case 'AlcaCfnr$':
+                setAlcaCfnr$(event.target.value);
                 break;
-            case "AlcaCnr$":
-                setAlcaCnr$(event.target.value)
+            case 'AlcaCnr$':
+                setAlcaCnr$(event.target.value);
                 break;
             default:
                 break;
         }
-    }
-    const stepOneCompleted = (event) => {
+    };
+    const stepOneCompleted = event => {
         event.preventDefault();
-        setLastStep(false)
+        setLastStep(false);
         setBillData({
             ...billData,
             start_date: startDate,
@@ -111,107 +111,83 @@ export default function CreateBill({verifyNumber}) {
         });
         setStep(2);
     };
-    const stepTwoCompleted = (event) => {
+    const stepTwoCompleted = event => {
         event.preventDefault();
-        setLastStep(false)
+        setLastStep(false);
         setBillData({
             ...billData,
-            residential_basic_cubic_meters: parseFloat(
-                parseFloat(crbm3).toFixed(2)
-            ),
-            residential_basic_superior_cubic_meters: parseFloat(
-                parseFloat(crsbm3).toFixed(2)
-            ),
-            not_residential_cubic_meters: parseFloat(
-                parseFloat(cnrm3).toFixed(2)
-            )
+            residential_basic_cubic_meters: parseFloat(parseFloat(crbm3).toFixed(2)),
+            residential_basic_superior_cubic_meters: parseFloat(parseFloat(crsbm3).toFixed(2)),
+            not_residential_cubic_meters: parseFloat(parseFloat(cnrm3).toFixed(2)),
         });
         setStep(3);
     };
-    const stepThreeCompleted = (event) => {
-        setLastStep(false)
+    const stepThreeCompleted = event => {
+        setLastStep(false);
         event.preventDefault();
         setBillData({
             ...billData,
-            residential_fixed_aqueduct: parseFloat(
-                parseFloat(acueCfr$).toFixed(2)
-            ),
-            residential_basic_aqueduct: parseFloat(
-                parseFloat(acueCrb$).toFixed(2)
-            ),
-            residential_basic_superior_aqueduct: parseFloat(
-                parseFloat(acueCrsb$).toFixed(2)
-            ),
-            not_residential_fixed_aqueduct: parseFloat(
-                parseFloat(acueCfnr$).toFixed(2)
-            ),
-            not_residential_aqueduct: parseFloat(
-                parseFloat(acueCnr$).toFixed(2)
-            ),
+            residential_fixed_aqueduct: parseFloat(parseFloat(acueCfr$).toFixed(2)),
+            residential_basic_aqueduct: parseFloat(parseFloat(acueCrb$).toFixed(2)),
+            residential_basic_superior_aqueduct: parseFloat(parseFloat(acueCrsb$).toFixed(2)),
+            not_residential_fixed_aqueduct: parseFloat(parseFloat(acueCfnr$).toFixed(2)),
+            not_residential_aqueduct: parseFloat(parseFloat(acueCnr$).toFixed(2)),
         });
         setStep(4);
     };
 
-    const stepFourCompleted = (event) => {
-        setLastStep(true)
+    const stepFourCompleted = event => {
+        setLastStep(true);
         event.preventDefault();
         setBillData({
             ...billData,
-            residential_fixed_sewerage: parseFloat(
-                parseFloat(alcaCfr$).toFixed(2)
-            ),
-            residential_basic_sewerage: parseFloat(
-                parseFloat(alcaCrb$).toFixed(2)
-            ),
-            residential_basic_superior_sewerage: parseFloat(
-                parseFloat(alcaCrsb$).toFixed(2)
-            ),
-            not_residential_fixed_sewerage: parseFloat(
-                parseFloat(alcaCfnr$).toFixed(2)
-            ),
-            not_residential_sewerage: parseFloat(
-                parseFloat(alcaCnr$).toFixed(2)
-            ),
+            residential_fixed_sewerage: parseFloat(parseFloat(alcaCfr$).toFixed(2)),
+            residential_basic_sewerage: parseFloat(parseFloat(alcaCrb$).toFixed(2)),
+            residential_basic_superior_sewerage: parseFloat(parseFloat(alcaCrsb$).toFixed(2)),
+            not_residential_fixed_sewerage: parseFloat(parseFloat(alcaCfnr$).toFixed(2)),
+            not_residential_sewerage: parseFloat(parseFloat(alcaCnr$).toFixed(2)),
         });
-        console.log(billData)
+        console.log(billData);
     };
     useEffect(() => {
         setBillData(billData);
-        if ((billData.residential_basic_superior_sewerage || billData.residential_basic_superior_sewerage == 0) && lastStep) {
+        if (
+            (billData.residential_basic_superior_sewerage ||
+                billData.residential_basic_superior_sewerage == 0) &&
+            lastStep
+        ) {
             createBillRequest();
         }
     }, [billData]);
     const createBillRequest = () => {
-        setIsLoading(true)
-        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_BILL_PATH}`,
-            {
-                method: 'POST',
-                headers: {
-                    'user-id': sessionStorage.getItem('UserId'),
-                    'Authorization': sessionStorage.getItem('AuthToken'),
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(billData)
-            })
-            .then((response) => {
+        setIsLoading(true);
+        fetch(`${process.env.REACT_APP_MS_BASE_URL}${process.env.REACT_APP_MS_BILL_PATH}`, {
+            method: 'POST',
+            headers: {
+                'user-id': sessionStorage.getItem('UserId'),
+                Authorization: sessionStorage.getItem('AuthToken'),
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(billData),
+        })
+            .then(response => {
                 if (response.status === 401) {
-                    closeSessionHandler()
+                    closeSessionHandler();
                 }
-                return response.json()
+                return response.json();
             })
             .then(data => {
-                setIsLoading(false)
+                setIsLoading(false);
                 if (data.bill_id) {
-                    setProcessAlert(1)
-                }
-                else {
-                    setProcessAlert(2)
+                    setProcessAlert(1);
+                } else {
+                    setProcessAlert(2);
                 }
             })
-            .catch((error) => {
-                setIsLoading(false)
-                setProcessAlert(2)
-            })
+            .catch(error => {
+                setIsLoading(false);
+                setProcessAlert(2);
+            });
     };
     return (
         <>
@@ -219,37 +195,35 @@ export default function CreateBill({verifyNumber}) {
             {processAlert === 1 && (
                 <Alert
                     image={successIcon}
-                    title='Yayy!'
-                    subtitle='La factura se guardó exitosamente.'
-                    footer='Continuar'
+                    title="Yayy!"
+                    subtitle="La factura se guardó exitosamente."
+                    footer="Continuar"
                     redirect={true}
                     path="/add-consumption"
-                    onCloseAlert={() => { }}
+                    onCloseAlert={() => {}}
                 />
             )}
             {processAlert === 2 && (
                 <Alert
                     image={errorIcon}
-                    title='Ooops!'
-                    subtitle='Hubo un problema guardando la factura, por favor intenta de nuevo.'
-                    footer='Intentar de nuevo'
+                    title="Ooops!"
+                    subtitle="Hubo un problema guardando la factura, por favor intenta de nuevo."
+                    footer="Intentar de nuevo"
                     redirect={false}
                     onCloseAlert={() => {
-                        setStep(1)
-                        setProcessAlert(0)
-                        setIsLoading(false)
+                        setStep(1);
+                        setProcessAlert(0);
+                        setIsLoading(false);
                     }}
                 />
             )}
             {verifyAuth(verifyNumber) && (
-                <div className='createBill'>
-                    <div className='createBill-header'>
+                <div className="createBill">
+                    <div className="createBill-header">
                         {step > 1 && <CloseButton path={'/menu'} />}
-                        <h1 className='createBill-header-title'>
-                            Informacion de la factura
-                        </h1>
+                        <h1 className="createBill-header-title">Informacion de la factura</h1>
                     </div>
-                    <div className='createBill-body'>
+                    <div className="createBill-body">
                         {step === 1 && (
                             <BillInfoForm
                                 onCancel={() => (document.location = '/menu')}
