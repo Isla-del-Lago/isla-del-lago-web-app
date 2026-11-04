@@ -27,6 +27,7 @@ export default function CreateBill({verifyNumber}) {
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
     const [discounts, setDiscounts] = useState()
+    const [additionalDiscounts, setAdditionalDiscounts] = useState()
     const [cleaning, setCleaning] = useState()
     const [crbm3, setCrbm3] = useState()
     const [crsbm3, setCrsbm3] = useState()
@@ -52,6 +53,9 @@ export default function CreateBill({verifyNumber}) {
                 break;
             case "discounts":
                 setDiscounts(event.target.value)
+                break;
+            case "additionalDiscounts":
+                setAdditionalDiscounts(event.target.value)
                 break;
             case "cleaning":
                 setCleaning(event.target.value)
@@ -107,6 +111,7 @@ export default function CreateBill({verifyNumber}) {
             start_date: startDate,
             end_date: endDate,
             discounts: parseFloat(parseFloat(discounts).toFixed(2)),
+            additional_discounts: parseFloat(parseFloat(additionalDiscounts).toFixed(2)),
             cleaning: parseFloat(parseFloat(cleaning).toFixed(2)),
         });
         setStep(2);
@@ -257,6 +262,7 @@ export default function CreateBill({verifyNumber}) {
                                 startDate={startDate}
                                 endDate={endDate}
                                 discounts={discounts}
+                                additionalDiscounts={additionalDiscounts}
                                 cleaning={cleaning}
                                 onChangeValuesHandler={changeValuesHandler}
                             />
